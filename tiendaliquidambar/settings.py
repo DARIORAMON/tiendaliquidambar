@@ -100,6 +100,10 @@ DATABASES = {
         conn_max_age=600
     )
 }
+
+if not DATABASES['default']:
+    DATABASES['default'] = dj_database_url.parse('sqlite:///db.sqlite3')
+    
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
