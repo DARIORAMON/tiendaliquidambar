@@ -1,0 +1,30 @@
+/* COLORES */
+$logo: #ff0000;
+$tercero: #cd2122;
+$logo_suave: #fc2652;
+$negro:#000;
+$principal:    #888;
+$secundario: #efefef;
+$fuerte: #B40000;
+$blanco: #fff;
+ 
+/* CUSTOMIZAR MENÚ */
+.navbar{
+    background-color:#FFFFFF;
+}
+
+
+/* **********************
+* TIPOGRAFIA
+* **********************/
+$enable-responsive-font-sizes:true;
+h1{
+    font-family: 'Bebas Neue', cursive;
+
+
+}
+
+h2, h3, h4, h5, h6, p, span, a, button,b, div{
+    font-family: 'Montserrat', sans-serif;
+} 
+

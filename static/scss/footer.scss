@@ -1,0 +1,240 @@
+#linea_footer {
+  color: #333;
+  background-color: #f0f0f0;
+  .d-inline {
+    background-color: #f0f0f0;
+    a {
+      background-color: #f0f0f0;
+      text-decoration: none;
+      color: #333;
+    }
+    a:hover {
+      color: $logo_suave;
+    }
+  }
+}
+
+#footer_newsleter {
+  .footer_newsleter_1 {
+    border-style: solid;
+    border-width: 1px 1px;
+
+    -moz-border-radius-topleft: 15px;
+    -moz-border-radius-topright: 15px;
+    -moz-border-radius-bottomleft: 15px;
+    -moz-border-radius-bottomright: 15px;
+    -webkit-border-top-left-radius: 15px;
+    -webkit-border-top-right-radius: 15px;
+    -webkit-border-bottom-left-radius: 15px;
+    -webkit-border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+
+  .footer_newsleter_ing {
+    background-color: #e00613;
+    color: #fff;
+    padding: 0px;
+    font-size: 18px;
+    border-style: none;
+    border-width: 0px;
+  }
+
+  .footer_newsleter_ing::placeholder {
+    color: #fff;
+    opacity: 1; /* Firefox */
+  }
+
+  .footer_newsleter_ing:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #fff;
+  }
+
+  .footer_newsleter_ing::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #fff;
+  }
+
+  .footer_newsleter_sub {
+    width: 30px;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    background-color: #e00613;
+    color: #fff;
+    -moz-border-radius-topright: 15px;
+    -moz-border-radius-bottomright: 15px;
+    -webkit-border-top-right-radius: 15px;
+    -webkit-border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  color: #ffffff;
+  background-color: #e00613;
+  .d-inline {
+    background-color: #e00613;
+    color: #ffffff;
+    p {
+      padding-right: 5px;
+    }
+    input {
+      background-color: #e00613;
+      color: #ffffff;
+    }
+  }
+}
+
+#footer_datos {
+  background-color: #f0f0f0;
+  .d-inline {
+    ul {
+      list-style-type: none;
+      .texto_li {
+        color: #333;
+        padding: 5px;
+        font-size: 12px;
+      }
+      li {
+        b {
+          color: #333;
+        }
+        span {
+          color: #333;
+          padding: 10px;
+          font-size: 16px;
+        }
+      }
+    }
+    .redes {
+      text-decoration: none;
+    }
+    .redes:hover {
+      text-decoration: none;
+      color: #333;
+    }
+  }
+  .footer_datos_nosotros,
+  .footer_datos_categoria,
+  .footer_datos_ayuda {
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #e00613;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  }
+}
+
+#footer_final {
+  background-color: #f0f0f0;
+
+  .d-inline {
+    p {
+      b {
+        color: #333;
+        font-size: 12px;
+      }
+    }
+    ul {
+      list-style-type: none;
+    }
+  }
+}
+
+.mi_whatsapp {
+  z-index: 6000;
+  position: fixed;
+  right: 1%;
+  bottom: 1%;
+  font-size: 26px;
+  background-color: #333;
+  color: rgb(22, 126, 95);
+  border-radius: 50%;
+  a {
+    text-decoration: none;
+    i {
+      color: rgb(6, 201, 6);
+    }
+  }
+}
+.mi_whatsapp:hover {
+  font-size: 26px;
+  background-color: #bcf0c2;
+  color: rgb(22, 126, 95);
+  border-radius: 50%;
+  a {
+    text-decoration: none;
+    i {
+      color: rgb(6, 201, 6);
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .icono_movil {
+    z-index: 6000;
+    position: fixed;
+    -moz-box-shadow: 2px 2px 3px #f0f0f0;
+    -webkit-box-shadow: 2px 2px 3px #f0f0f0;
+    box-shadow: 2px 2px 3px #f0f0f0;
+    bottom: 0px;
+    font-size: 26px;
+    background-color: #333;
+    color: #f00;
+    border-radius: 50%;
+    a {
+      text-decoration: none;
+      i {
+        color: #f0f0f0;
+      }
+    }
+  }
+  .icono_movil:hover {
+    -moz-box-shadow: 1px 1px 3px #f0f0f0;
+    -webkit-box-shadow: 1px 1px 3px #f0f0f0;
+    box-shadow: 1px 1px 3px #f0f0f0;
+
+    background-color: #333;
+    color: #f00;
+    border-radius: 50%;
+    a {
+      text-decoration: none;
+      i {
+        color: #f0f0f0;
+      }
+    }
+  }
+  .icono_movil_out {
+    left: 1%;
+    bottom: 1%;
+  }
+  .icono_movil_perfil {
+    left: 23%;
+    bottom: 1%;
+  }
+  .icono_movil_pedidos {
+    left: 46%;
+    bottom: 1%;
+  }
+  .icono_movil_login {
+    left: 23%;
+    bottom: 1%;
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+  .icono_movil_registro {
+    left: 46%;
+    bottom: 1%;
+  }
+  .icono_movil_contacto {
+    left: 69%;
+    bottom: 1%;
+  }
+}
