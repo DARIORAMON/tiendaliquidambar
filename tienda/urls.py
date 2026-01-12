@@ -2,7 +2,7 @@ from django.urls import path
 from tienda import crear_datos_localstorage
 from tienda import views_agregar
 from tienda import views_agregar_i
-from tienda.views_tienda import Tienda, TiendaBusqueda, 
+from tienda.views_tienda import Tienda, TiendaBusqueda 
 from tienda.views_por_categoria import PorCategoria
 from tienda import views_comprar
 from tienda import views_quitar
