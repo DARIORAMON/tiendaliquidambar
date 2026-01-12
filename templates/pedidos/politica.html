@@ -1,0 +1,141 @@
+{% extends "plantilla_tienda.html" %}
+
+{% load static %}
+{% block carro %}
+{% load carrito %}
+
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <br/>
+      </div>
+    </div>
+</div> 
+
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <h1>Política De Privacidad</h1>
+        <h2>POLÍTICA DE PRIVACIDAD DE LOS DATOS PERSONALES SUMINISTRADOS POR EL USUARIO</h2>
+        <p>
+          Para poder utilizar el website de manera eficiente y segura, los usuarios deberán 
+        aportar ciertos datos, entre ellos, su nombre y apellido, domicilio, cuenta de mail,
+         documento de identidad, sin los cuales se tornaría imposible brindar los servicios.
+          Por eso se requiere que éstos sean verdaderos y exactos. 
+          Los datos recabados por los formularios correspondientes serán incorporados 
+          a la base general clientes de Liquidambar Almacen natural.
+        </p>
+        
+        <p>
+          La información personal que los usuarios ingresan en el website será tratada 
+          en forma confidencial y Liquidambar Almacen natural hará su mejor esfuerzo para proteger 
+          la privacidad de los mismos, de conformidad con lo dispuesto en la ley 25.326.
+            Para esto se utilizará el sistema de secure socket layer (SSL), 
+            que encripta los datos suministrados y evita su uso desautorizado, 
+            garantizando una operación segura. 
+            No obstante lo anterior, el usuario deberá tener en cuenta que internet 
+            no es un medio inexpugnable en cuanto a su seguridad. 
+            Cuando se ingresan datos y números correspondientes a tarjetas de 
+            crédito estos son encriptados, asegurando así que se mantengan en 
+            total confidencialidad y no puedan ser vistos por otras personas.
+        </p>
+        <p>
+          Los Visitantes tienen la facultad de ejercer el derecho de acceso, 
+          rectificación, bloqueo o supresión de los datos personales que hayan 
+          sido suministrados al Sitio personalmente o través de un tercero. 
+          Se aclara, que estos derechos sólo podrán ejercerse sobre aquellas
+           informaciones que puedan considerarse datos personales en los 
+           términos de la Ley Nº25.326. Liquidambar Almacen natural garantiza a sus usuarios 
+           que utilizará los datos dentro de las pautas establecidas 
+           por la ley 25.326 de protección de los datos personales.
+        </p>
+        <p>En caso de que los datos sean requeridos por la vía legal, 
+          administrativa o judicial correspondiente, Liquidambar Almacen natural se verá 
+          compelida a revelar los mismos a la autoridad solicitante. 
+          En la medida en que la legislación y normas de procedimiento lo permitan, 
+          Liquidambar Almacen natural informará a los usuarios sobre estos requerimientos. 
+          Al registrarse en el website y formar parte de la base general de clientes, 
+          los usuarios aceptan que Liquidambar Almacen natural se comunique con ellos por vía postal, 
+          telefónica o electrónica para enviar información que la empresa considere, 
+          a su exclusivo criterio, que pueda ser de su interés, 
+          incluyendo publicidad e información sobre ofertas y promociones.
+        </p>
+        <p>En caso de que los usuarios no deseen ser contactados con estos fines, 
+          podrán manifestárselo fehacientemente a Liquidambar Almacen natural, quien procederá a 
+          interrumpir este tipo de comunicaciones en el menor tiempo que le sea posible. 
+          El titular de los datos personales tiene la facultad de ejercer 
+          el derecho de acceso a los mismos en forma gratuita a intervalos 
+          no inferiores a seis meses, salvo que se acredite un interés 
+          legítimo al efecto conforme lo establecido en el artículo 14, 
+          inciso 3 de la ley nº 25.326. 
+          La dirección nacional de protección de datos personales, 
+          órgano de control de la ley nº 25.326, tiene la atribución 
+          de atender las denuncias y reclamos que se interpongan con 
+          relación al incumplimiento de las normas sobre protección de datos personales.
+        </p>
+      </div>
+    </div>
+</div>  
+
+<div class="container">
+    <div class="row">
+		<div class="col-12">
+			<br/><br/><br/>
+		</div>
+    </div>
+</div> 
+ 
+
+{% endblock %}
+
+{% block javascript %}
+<script src="https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js"></script> 
+<script type="text/javascript" src="{% static 'js/juan_ajax.js' %}"></script>
+
+<script>
+/*
+  const items = { ...localStorage };
+  console.log(items);
+  Crear(items);*/
+</script>
+<script>
+$(document).ready(function() {
+ $("#MyModal").modal();
+});
+</script>
+
+<script>
+    $(' .div_ver_c').css({
+          "display": "none",
+        });
+    
+    $( ".ver_stock").mouseover(function() {
+      $(this).find('.div_ver_c').css({
+          "display": "block",
+        });
+        $(this).css({
+          "background-color": "#e8e8e8",
+        });       
+    });
+    $( ".ver_stock").mouseout(function() {
+      $(this).find('.div_ver_c').css({
+          "display": "none",
+        });
+        $(this).css({
+          "background-color": "#fff",
+        });   
+    });
+    
+    </script> 
+
+
+<script>
+$( "#mayorista").css({
+    "display": "block",     
+});
+</script> 
+
+
+{% endblock %}
+
+

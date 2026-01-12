@@ -1,0 +1,142 @@
+{% extends "plantilla.html" %}
+
+{% load static %}
+{% block carro %}
+{% load carrito %}
+
+{% include "minorista_mayorista.html" with  user=user clave_mayorista_usuario=clave_mayorista_usuario clave_mayorista=clave_mayorista %}
+
+
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="row justify-content-start ">
+        <div class="d-inline mi_lista_menu1 pt-3">
+            {% if datos_para_imagen.imagen %}
+                <img  src="/media/{{datos_para_imagen.imagen}}"    alt="{{usuario.nombre}}" class="img-thumbnail" style="width:50px; height: auto;"/>
+            {% else %}
+                <img  src="/media/usuario/defecto.png"    alt="{{usuario.nombre}}" class="img-thumbnail" style="width:50px; height: auto;"/>
+            {% endif %}
+        </div>
+        <div class="d-inline mi_lista_menu1 pt-3">
+            <h3>&nbsp;&nbsp;Hola:&nbsp; {{request.user}}</h3>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+
+
+
+<div class="container">
+    <div class="border rounded p-4 m-4">
+        <div class="d-flex justify-content-center">
+            <center>
+                <h3>La compra ha sido exitosa, en breve te estaremos enviando 
+                    por mail la factura de compra
+                </h3>
+            </center>   
+        </div>       
+        <div class="d-flex justify-content-center"> 
+            <hr/>  
+        </div>   
+        <div class="d-flex justify-content-around">
+            <div>        
+                <a class="navbar-brand mb-3" href="{% url 'mis_pedidos'  %}">
+                    <button type="button" class="btn btn-danger  " style="width:100%;">
+                        Mis Pedidos
+                    </button>
+                </a>
+            </div>
+            <div>
+                <a class="navbar-brand mb-3" href="{% url 'tienda'  %}">
+                    <button type="button" class="btn btn-danger  " style="width:100%;">
+                        Seguir comprando
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <!-- *******************************************************
+        *   VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+        *********************************************************-->
+
+    </div>
+</div>
+
+
+<div class="container">
+
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Para finalizar</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            Registrate antes de seguir y completa los datos de envío. 
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <a class="pt-1 pb-1 pl-3 pr-3"  href="{% url 'registro'  %}">
+                <button type="button" class="btn btn-danger"  >
+                    Registrarme
+                </button>
+            </a>
+ 
+          </div>     
+        </div>
+      </div>
+    </div>
+  </div>  
+ 
+  
+ 
+
+{% endblock %}
+
+{% block javascript %}
+<script src="https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js"></script> 
+<script type="text/javascript" src="{% static 'js/juan_ajax.js' %}"></script>
+
+<script>
+/*
+  const items = { ...localStorage };
+  console.log(items);
+  Crear(items);*/
+</script>
+<script>
+$(document).ready(function() {
+ $("#MyModal").modal();
+});
+</script>
+
+<script>
+    "use strict";
+    localStorage.clear();
+
+    $.ajax({
+        url: "/pedidos/actualizar_estado_pedido/",
+        data:{},
+        type: 'get',
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function (json) {
+            console.log("hay exito");
+        },
+        //data: JSON.stringify(person)
+    });
+
+
+
+
+</script> 
+
+ 
+{% endblock %}
+
+

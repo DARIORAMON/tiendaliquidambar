@@ -1,0 +1,39 @@
+{% extends "plantilla_tienda.html" %}
+
+{% load static %}
+{% load i18n %}
+{% block perfil %}
+ 
+<div class="container-fluid"   >
+    <div class="row reflexion justify-content-center align-items-center  " style="padding-top:120px; padding-bottom: 120px;">   
+        <div class="col-12  " style="padding:0px;">
+            <div>
+                <center>
+                    <h1 style="color:#1c9c92d0;">Cerraste sesión correctamente! </h1>
+                    <br/>
+                </center>    
+            </div>
+        </div>  
+        <div class="col-10 col-sm-8 col-md-2   contacto_form" style="padding-bottom:15px;">
+            <a href="{% url 'tienda'  %}"   >
+                <button type="submit"  class=" col-12 btn btn-danger" style="background-color: darkslategray;">Tienda</button>
+            </a>        
+        </div>    
+     </div>
+ </div>  
+ 
+
+
+ 
+ 
+ 
+{% endblock %}
+
+{% block javascript %}
+<script src="https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js"></script> 
+<script type="text/javascript" src="{% static 'js/juan_ajax.js' %}"></script>
+<script>
+    localStorage.clear();
+</script>
+ 
+{% endblock %}

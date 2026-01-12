@@ -1,0 +1,123 @@
+{% extends "plantilla_tienda.html" %}
+
+{% load static %}
+{% block carro %}
+{% load carrito %}
+
+<div class="container">
+    <div class="row">
+		<div class="col-12">
+			<br/>
+		</div>
+    </div>
+</div>  
+
+<div id="registro" class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-10 col-md-6 conten_log">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="modal-title"><center>REGISTRO DE USUARIO</center></h4>
+          </div>
+          <div class="card-body">
+            <form method="POST" action="">{% csrf_token %}
+              <div class="input-group mb-3">
+                <span class="input-group-text  " id="basic-addon1"  ><i class="fa fa-user"   aria-hidden="true"></i></span>
+                <input type="text" class="form-control" name="username" placeholder="Usuario ..." maxlength="150" autofocus="" required="" id="id_username">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text  " id="basic-addon1"  ><i class="fa fa-user"   aria-hidden="true"></i></span>
+                <input type="email" class="form-control" name="email" placeholder="Email ..." maxlength="254" id="id_email">
+              </div>             
+              <div class="input-group mb-3">
+                <span class="input-group-text  " id="basic-addon1"  ><i class="fa fa-user"   aria-hidden="true"></i></span>
+                <input type="password" class="form-control" name="password1" placeholder="Password ..." autocomplete="new-password" required="" id="id_password1">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text  " id="basic-addon1"  ><i class="fa fa-user"   aria-hidden="true"></i></span>
+                <input type="password" class="form-control" name="password2" placeholder="Repetir Password ..." autocomplete="new-password" required="" id="id_password2">
+              </div>              
+              
+              <center>
+                <br/>
+                <button type="submit" class="btn btn-danger float-right">
+                  Registrarme
+                  <i class="fa fa-caret-right"></i>
+                </button>
+              </center>
+            </form>
+          </div>
+          <div class="card-footer">
+            {{form.errors}}
+            <p>
+              <center>
+                Si ya tienes una cuenta: <a href="{% url 'login' %}" >Loguearme</a></p>
+              </center>    
+          </div>
+        </div>
+      </div>
+    </div>
+</div>  
+
+<div class="container">
+    <div class="row">
+		<div class="col-12">
+			<br/><br/><br/>
+		</div>
+    </div>
+</div> 
+ 
+
+{% endblock %}
+
+{% block javascript %}
+<script src="https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js"></script> 
+<script type="text/javascript" src="{% static 'js/juan_ajax.js' %}"></script>
+
+<script>
+/*
+  const items = { ...localStorage };
+  console.log(items);
+  Crear(items);*/
+</script>
+<script>
+$(document).ready(function() {
+ $("#MyModal").modal();
+});
+</script>
+
+<script>
+    $(' .div_ver_c').css({
+          "display": "none",
+        });
+    
+    $( ".ver_stock").mouseover(function() {
+      $(this).find('.div_ver_c').css({
+          "display": "block",
+        });
+        $(this).css({
+          "background-color": "#e8e8e8",
+        });       
+    });
+    $( ".ver_stock").mouseout(function() {
+      $(this).find('.div_ver_c').css({
+          "display": "none",
+        });
+        $(this).css({
+          "background-color": "#fff",
+        });   
+    });
+    
+    </script> 
+
+
+<script>
+$( "#mayorista").css({
+    "display": "block",     
+});
+</script> 
+
+
+{% endblock %}
+
+

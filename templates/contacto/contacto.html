@@ -1,0 +1,84 @@
+{% extends "plantilla_tienda.html" %}
+{% block title %}Liquidambar Almacen Natural-Contacto{% endblock %}
+{% load static %}
+{% load i18n %}
+{% block contacto %}
+<!-- ---------------------------------------------------------------------------
+-------------- 
+------------------------------------------------------------------------------->
+
+     
+ <div class="container-fluid"   >
+    <div class="row reflexion justify-content-around align-items-center border" style="padding-top:20px;">   
+        <div class="col-12 col-md-5 contacto_form" style="padding-bottom:15px;">
+                    <h1 class="h1juan" style="padding-left:15px; color: aquamarine;">Contacto</h1>    
+                    <form id="contact" action="" method="post" class="col-xs-12">{% csrf_token %} 		
+                        <div class="col-12 form-group" >
+                            {{form}}
+                        </div> 
+                        <div class="row justify-content-between">
+                            <div class="col-4"></div>
+                            <div class="col-4" style="padding-right:30px;">
+                                <button type="submit"  class=" col-12 btn btn-danger" style = "background-color: aqua;">Enviar</button>
+                            </div>
+                        </div>                        
+                    </form>
+        </div>    
+        <div class="col-12 col-md-6" style="padding:0px;">
+            <div>
+                <a href="#">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3294.69844437782!2d-58.99119062355565!3d-34.33269834323719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bb7b94db25d4e7%3A0x1ff17d1502a12d76!2sAv.%20Belgrano%20177%2C%20B2814DPO%20Los%20Cardales%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1725931710910!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> 
+                </a>
+            </div>
+        </div>         
+     </div>
+ </div>  
+
+    
+<section class="container-fluid ">
+    <div class="row" style="padding-top:10px; ">
+        <div class="col-12" style="padding:0px;  ">
+           <br/> 
+        </div>
+    </div>
+</section>
+   
+  
+
+
+
+{% endblock %}
+{% block javascript %}
+<script src="https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js"></script> 
+<script type="text/javascript" src="{% static 'js/juan_ajax.js' %}"></script>
+
+ 
+     
+
+	<script>
+		$("#id_fecha").css({'display':'none'});
+		//$("#id_fecha").parent().find("label").css({'display':'none'});
+		$("#id_estado_respuesta").css({'display':'none'});
+		$("#id_estado_respuesta").parent().find("label").css({'display':'none'});
+		
+		
+		$("#formulario_contacto li").css({'list-style':'none'});
+ 
+		//$("#formulario_contacto li label").css({'width':"100%", 'text-align':'center',});
+		//$("#formulario_contacto li input").css({'width':"100%", 'text-align':'center',});
+
+		$("input").css({'width':"100%", 'text-align':'center', 'margin-bottom':'7px'});
+		$("textarea").css({'width':"100%", 'text-align':'center',});
+
+
+		$("#id_nombre").attr("placeholder", "Nombre");
+		$("#id_descripcion").attr("placeholder", "Descripcion");
+		$("#id_mail").attr("placeholder", "Mail");
+		$("#id_telefono").attr("placeholder", "Teléfono");
+		$("#id_captcha_1").attr("placeholder", "Captcha");
+	</script>
+	
+	
+	
+	
+{% endblock %}

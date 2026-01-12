@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block contenedor %}
+
+<div class="container mb-1">
+  <div class="row justify-content-end ">
+
+      <div class="d-inline mi_lista_menu1 mt-3">
+		<a href="{% url 'index'  %}"  class="pt-1 pb-1 pl-3 pr-3 boton_carrito">
+            TIENDA
+        </a>  
+      </div>  
+      <div class="d-inline mi_lista_menu1 mt-3">
+        <a  class="pt-1 pb-1 pl-3 pr-3 boton_carrito"  ><span class="icon-carrito"></span>Carrito</a>
+       <!--  <a  class="pt-1 pb-1 pl-3 pr-3" href="{% url 'carrito'  %}"><span class="icon-carrito"></span>Carrito</a> -->
+      </div>
+    {% if user.is_authenticated %}
+      <div class="d-inline mi_lista_menu1 pt-3">
+        <a class="pt-1 pb-1 pl-3 pr-3"   href="{{dominio_actual}}/accounts/logout/">Logout</a>
+      </div>
+    {% else %}
+      <div class="d-inline mi_lista_menu1 pt-3">
+        <a class="pt-1 pb-1 pl-3 pr-3"   href="{{dominio_actual}}/accounts/login/">Login</a>
+      </div>
+      <div class="d-inline mi_lista_menu1 pt-3">
+        <a class="pt-1 pb-1 pl-3 pr-3"  href="{{dominio_actual}}/accounts/register/">Registrarse</a>
+      </div>
+    {% endif %}
+  </div>
+</div> 
+ 
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+{% block content %}{% endblock %}
+{% block perfil %}{% endblock %}
+{% block carro %}{% endblock %}
+{% block tienda %}{% endblock %}
+<!-- ---------------------------------------------------------------------------
+--------------Footer 
+------------------------------------------------------------------------------->
+
+
+
+
+
+<!-- Footer -->
+<div class="container ">
+  <div class="row">
+    <div id="linea_footer" class="col-12"  style="padding-top:20px; padding-bottom:20px;">
+      <div  class="row justify-content-center ">
+        {% for categoria in categorias %}
+          {% if categoria.imagen == "" %}
+            <div class="d-inline   ">
+              <a href="{% url 'categoria' categoria.id %}" class="list-group-item list-group-item-action border-0">
+                {{categoria.nombre|upper}} 
+              </a> 
+            </div> 
+          {% else %}
+            <div class="d-inline   ">
+              <a href="{% url 'categoria' categoria.id %}" class="list-group-item list-group-item-action border-0">
+                <img class="card-img-top" src="/media/{{categoria.imagen}}" alt="Foto producto" style="width:100px; ">
+              </a> 
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div id="footer_newsleter" class="col-12"  style="padding-top:20px; padding-bottom:20px;">
+      <div  class="row justify-content-center ">
+          <div class="d-inline   ">
+            <p>
+              SUSCRIBITE A NUESTRO NEWSLETTER
+            </p>
+          </div> 
+          <div class="d-inline ">
+            <form class=""   >
+            <input class="" placeholder="Ingresa tu mail" aria-label="Ingresa tu mail"> 
+            <input type="submit" value=">"/>    
+          </form>
+          </div> 
+      </div>
+    </div>
+    <div id="footer_datos" class="col-12"  style="padding-top:20px; padding-bottom:20px;">
+      <div  class="row justify-content-center ">
+          <div class="d-inline  col-12 col-md-4 text-center">
+            <ul>
+              <li><b>MEDIOS DE PAGO</b></li>
+              <li>
+                <img class="card-img-top" src="/media/medios_pago/visa_logo.png" alt="Foto producto" style="width:50px; ">
+                <img class="card-img-top" src="/media/medios_pago/american_express.png" alt="Foto producto" style="width:50px; ">
+                <img class="card-img-top" src="/media/medios_pago/master_card.png" alt="Foto producto" style="width:50px; ">
+                <img class="card-img-top" src="/media/medios_pago/mercado_pago.jpg" alt="Foto producto" style="width:50px; ">
+              </li>          
+            </ul>
+            <ul>
+              <li>
+                <b>SEGUINOS EN:</b>
+                <span class="icon-facebook"></span>
+                <span class="icon-instagram"></span>
+              </li>         
+            </ul>
+          </div> 
+          <div class="d-inline  col-12 col-md-4 text-center">
+            <ul>
+              <li><b>NOSOTROS</b></li>
+              <li class="texto_li">CONTACTO</li>  
+              <li class="texto_li">CAMBIOS</li>
+              <li class="texto_li">DEVOLUCIONES</li>         
+            </ul>
+          </div> 
+          <div class="d-inline  col-12 col-md-4 text-center">
+            <ul>
+              <li><b>AYUDA</b></li>
+              <li class="texto_li"><a href="{% url 'preguntas_frecuentes'  %}">PREGUNTAS FRECUENTES</a></li>  
+              <li class="texto_li"><a href="{% url 'terminos_y_condiciones'  %}">TERMINOS Y CONDICIONES</a></li>
+              <li class="texto_li"><a href="{% url 'metodos_de_envio'  %}">MÉTODOS DE ENVIO</a></li>  
+              <li class="texto_li"><a href="{% url 'medios_de_pago'  %}">MÉTODOS DE PAGO</a></li>        
+            </ul>
+          </div> 
+      </div>
+    </div>
+    <div id="footer_final" class="col-12"  style="padding-top:20px; padding-bottom:20px;">
+      <div  class="row justify-content-center ">
+          <div class="d-inline  col-12 col-md-6  ">
+             <p><b>TODOS LOS DERECHOS RESERVADOS</b></p>
+          </div> 
+          <div class="d-inline  col-12 col-md-6 text-center">
+                <img class="card-img-top" src="/media/medios_pago/cyber_monday.png" alt="Foto producto" style="width:70px; ">
+                <img class="card-img-top" src="/media/medios_pago/brandlive.png" alt="Foto producto" style="width:70px; ">
+          </div> 
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

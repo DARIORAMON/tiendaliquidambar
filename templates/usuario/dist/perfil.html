@@ -1,0 +1,180 @@
+{% extends "plantilla.html" %}
+
+{% load static %}
+{% load i18n %}
+{% block perfil %}
+<div class="container">
+
+  <!-- The Modal -->
+  <div class="modal" id="mayorista">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Mayorista</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class ="row justify-content-around">
+                    {% if user.is_authenticated %}
+                    {% else %}
+                        <div>
+                            <a href="{% url 'login' %}">
+                                <button id="login_m" type="button" class="btn btn-danger"  >
+                                    Login
+                                </button>
+                            </a>
+                        </div><!--
+                        <div>
+                            <button id="registrarme_m" type="button" class="btn btn-danger"  >
+                                Cambiar Clave
+                            </button>
+                        </div>-->
+                        <div>
+                            <a href="{% url 'registro' %}">
+                                <button id="registrarme_m" type="button" class="btn btn-danger"  >
+                                    Registrarme
+                                </button>
+                            </a>
+                        </div>
+                    {% endif %}
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <div class ="row justify-content-around">
+                        {% if user.is_authenticated %}
+                        <div class="col-12">
+                            <p>Para accecer a la compra mayorista debe de tener un usuario y 
+                            tener la clave mayorista de la semana. Si su clave no está actualizada
+                            ingresela para acceder a los descuentos.</p>
+                        </div> 
+                        {% else %}
+                        <div class="col-12">
+                            <p>Para accecer a la compra mayorista debe de tener un usuario y 
+                            tener la clave mayorista de la semana. Si su clave no está actualizada
+                            <b style="color:#f00;">luego de registrarse</b> regrese aquí 
+                            e ingrese la clave el campo que aparecerá y acceda a nuestros descuentos.</p>
+                        </div> 
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                        <div class="col-12 col-md-8">
+                        <form action="/action_page.php">
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Actualice la Clave Mayorista" id="actualizar_c">
+                            </div>
+                        </form>
+                        </div> 
+                        <div id="resulado_actualizar_clave" style="background-color:#f00; color:#fff" class="col-12 col-md-8"> 
+                        </div>  
+                        {% endif %}        
+                    </div>
+                </div>     
+            </div>
+        </div>
+  </div>
+</div> 
+<div class="container">
+    <div class="row">
+        <div class="col-12 p-0">
+
+            {% if clave_mayorista_usuario == clave_mayorista %}
+            <h1   style="background-color:#f00; color:#fff; font-weight: 100;">Compra Mayorista</h1>
+            {% else %}
+            <h1   style="background-color:#f00; color:#fff; font-weight: 100;">Compra Minorista</h1>
+            {% endif %} 
+        </div>
+    </div>
+</div> 
+
+ 
+
+
+
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="margin-top:50px; margin-bottom:50px;">
+ 
+        <div class="col-12 col-md-8 mx-auto border rounded p-4"  >
+            <h3 class="alert alert-light border round">Editar Perfil</h3>
+
+
+            <form id="form" class="    "  action="" method="post" style=" " enctype="multipart/form-data">{% csrf_token %}
+                <div class="campo_perfilu d-none" >
+                    {{form.usuario}}
+                </div>
+                <div class="campo_nombre">
+                    {%if form.nombre.errors %}<p class="perfil_error" >{{form.nombre.errors}}</p>{% endif%}
+                    <label class="id_nombre" for="id_nombre">Nombre:</label>
+                    {{form.nombre}}
+                </div>
+                <div class="campo_apellido">
+                    {%if form.apellido.errors %}<p class="perfil_error" >{{form.apellido.errors}}</p>{% endif%}
+                    <label class="id_apellido" for="id_apellido">Apellido:</label>
+                    {{form.apellido}}
+                </div>
+                <div class="campo_cuil_cuit">
+                    {%if form.cuil_cuit.errors %}<p class="perfil_error" >{{form.cuil_cuit.errors}}</p>{% endif%}
+                    <label class="id_cuil_cuit" for="id_nombre">CUIT/CUIL:</label>
+                    {{form.cuil_cuit}}
+                </div>
+                <div class="campo_clave">
+                    {%if form.clave.errors %}<p class="perfil_error" >{{form.clave.errors}}</p>{% endif%}
+                    <label class="id_clave" for="id_clave">Clave Mayorista:</label>
+                    {{form.clave}}
+                </div>
+
+                <div class="campo_perfil">
+                    {%if form.provincia.errors %}<p class="perfil_error" >{{form.provincia.errors}}</p>{% endif%}
+                    <label class="id_provincia" for="id_provincia">Provincia:</label>
+                    {{form.provincia}}
+                </div>
+                <div class="campo_perfil">
+                    {%if form.localidad.errors %}<p class="perfil_error" >{{form.localidad.errors}}</p>{% endif%}
+                    <label class="id_localidad" for="id_localidad">Localidad / Ciudad:</label>
+                    {{form.localidad}}
+                </div>
+                <div class="campo_perfil">
+                    {%if form.domicilio.errors %}<p class="perfil_error" >{{form.domicilio.errors}}</p>{% endif%}
+                    <label class="id_domicilio" for="id_domicilio">Domicilio:</label>
+                    {{form.domicilio}}
+                </div>
+                <div class="campo_perfil">
+                    {%if form.codigo_postal.errors %}<p class="perfil_error" >{{form.codigo_postal.errors}}</p>{% endif%}
+                    <label class="id_codigo_postal" for="id_codigo_postal">Código Postal:</label>
+                    {{form.codigo_postal}}
+                </div>
+                <div class="campo_perfil">
+                    {%if form.telefono_fijo.errors %}<p class="perfil_error" >{{form.telefono_fijo.errors}}</p>{% endif%}
+                    <label class="id_telefono_fijo" for="id_telefono_fijo">Teléfono Fijo (OPCIONAL):</label>
+                    {{form.telefono_fijo}}
+                </div>
+                <div class="campo_perfil">
+                    {%if form.celular.errors %}<p class="perfil_error" >{{form.celular.errors}}</p>{% endif%}
+                    <label class="id_celular" for="id_celular">Celular:</label>
+                    {{form.celular}}
+                </div>
+
+                <br/>  
+                <button type="submit" class="btn btn-danger" style="width:100%;">Enviar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+ 
+ 
+ 
+{% endblock %}
+
+{% block javascript %}
+<script src="https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js"></script> 
+<script type="text/javascript" src="{% static 'js/juan_ajax.js' %}"></script>
+<script>
+    $('#id_provincia').css({
+          'width': '100%',
+        }); 
+</script>
+ 
+{% endblock %}

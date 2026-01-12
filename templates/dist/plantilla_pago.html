@@ -1,0 +1,297 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block contenedor %}
+
+<div class="container mb-1">
+  <div class="row justify-content-end ">
+      <div class="d-inline mi_lista_menu1 mt-3">
+        <a  class="pt-1 pb-1 pl-3 pr-3 boton_carrito"  ><span class="icon-carrito"></span>Carrito</a>
+       <!--  <a  class="pt-1 pb-1 pl-3 pr-3" href="{% url 'carrito'  %}"><span class="icon-carrito"></span>Carrito</a> -->
+      </div>
+    {% if user.is_authenticated %}
+      <div class="d-inline mi_lista_menu1 pt-3">
+        <a class="pt-1 pb-1 pl-3 pr-3"   href="{% url 'logout'  %}">Logout</a>
+      </div>
+      <div class="d-inline mi_lista_menu1 pt-3">
+        <a class="pt-1 pb-1 pl-3 pr-3"   href="{% url 'perfil'  %}"  >Perfil</a>
+      </div>
+      <div class="d-inline mi_lista_menu1 pt-3">
+        <a class="pt-1 pb-1 pl-3 pr-3"   href="{% url 'mis_pedidos'  %}"  >Mis Pedidos</a>
+      </div>
+    {% else %}
+      <div class="d-inline mi_lista_menu1 pt-3">
+        <a class="pt-1 pb-1 pl-3 pr-3"   href="{% url 'login'  %}">Login</a>
+      </div>
+      <div class="d-inline mi_lista_menu1 pt-3">
+        <a class="pt-1 pb-1 pl-3 pr-3"  href="{% url 'registro'  %}">Registrarse</a>
+      </div>
+    {% endif %}
+      <div class="d-inline mi_lista_menu1 pt-3">
+        <a class="pt-1 pb-1 pl-3 pr-3"  href="{% url 'contacto'  %}">Contacto</a>
+      </div>
+  </div>
+</div> 
+ 
+
+<div class="container mb-0 pb-0 mt-0 ">
+  <div class="row mb-0 pb-0">
+    <div class="col-12  mx-auto mb-0 pb-0">
+      <nav class="navbar navbar-expand-lg navbar-light  border border-top-0 border-left-0  border-right-0 mb-0 pb-0 pt-0">
+        <a class="navbar-brand mb-3" href="{% url 'tienda'  %}">
+          <img src="/media/logos/logo_prestige.png" width="200" height="85" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"  ></span>
+        </button>
+        <div class="collapse navbar-collapse  mb-0 pb-0 " id="navbarSupportedContent">
+          <ul class="mi_lista_menu2 navbar-nav mr-auto">
+ 
+            <li class="nav-item mt-4 p-0  ">
+              <a href="{% url 'tienda'  %}" class="list-group-item list-group-item-action border-0 mt-4 p-3">
+                TIENDA
+              </a> 
+            </li>
+            {% for categoria in categorias %}
+              {% if categoria.imagen != "" %}
+                <li class="nav-item mt-4 p-0 ">
+                  <a href="{% url 'categoria' categoria.id %}" class="list-group-item list-group-item-action border-0 mt-4 p-3">
+                    {{categoria.nombre|upper}}
+                  </a> 
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+          <form class="form-inline my-2 my-lg-0  " style="  padding-top:30px;">
+            <input class="form-control  " type="search" placeholder="Search" aria-label="Search">     
+          </form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+{% block perfil %}{% endblock %}
+{% block carro %}{% endblock %}
+{% block tienda %}{% endblock %}
+{% block contacto %}{% endblock %}
+{% block mensaje_enviado %}{% endblock %}
+{% block pago %}{% endblock %}
+<!-- ---------------------------------------------------------------------------
+--------------Footer 
+------------------------------------------------------------------------------->
+
+
+
+
+
+<!-- Footer -->
+<div class="container-fluid ">
+  <div class="row">
+    <div id="linea_footer" class="col-12"  style="padding-top:20px; padding-bottom:20px;">
+      <div  class="row justify-content-center ">
+        {% for categoria in categorias %}
+          {% if categoria.imagen == "" %}
+            <div class="d-inline   ">
+              <a href="{% url 'categoria' categoria.id %}" class="list-group-item list-group-item-action border-0">
+                {{categoria.nombre|upper}} 
+              </a> 
+            </div> 
+          {% else %}
+            <div class="d-inline   ">
+              <a href="{% url 'categoria' categoria.id %}" class="list-group-item list-group-item-action border-0">
+                <img class="card-img-top" src="/media/{{categoria.imagen}}" alt="Foto producto" style="width:100px; ">
+              </a> 
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div id="footer_newsleter" class="col-12"  style="padding-top:20px; padding-bottom:20px;">
+      <div  class="row justify-content-center ">
+          <div class="d-inline   ">
+            <p>
+              SUSCRIBITE A NUESTRO NEWSLETTER
+            </p>
+          </div> 
+          <div class="d-inline ">
+            <form class=""   >
+            <input class="" placeholder="Ingresa tu mail" aria-label="Ingresa tu mail"> 
+            <input type="submit" value=">"/>    
+          </form>
+          </div> 
+      </div>
+    </div>
+    <div id="footer_datos" class="col-12"  style="padding-top:20px; padding-bottom:20px;">
+      <div  class="row justify-content-center ">
+          <div class="d-inline  col-12 col-md-3 text-center">
+            <ul>
+              <li><b>MEDIOS DE PAGO</b></li>
+              <li>
+                <img class="card-img-top" src="/media/medios_pago/visa_logo.png" alt="Foto producto" style="width:50px; ">
+                <img class="card-img-top" src="/media/medios_pago/american_express.png" alt="Foto producto" style="width:50px; ">
+                <img class="card-img-top" src="/media/medios_pago/master_card.png" alt="Foto producto" style="width:50px; ">
+                <img class="card-img-top" src="/media/medios_pago/mercado_pago.jpg" alt="Foto producto" style="width:50px; ">
+              </li>          
+            </ul>
+            <ul>
+              <li>
+                <b>SEGUINOS EN:</b>
+                <a href="https://es-la.facebook.com/prestigeoficial" class="redes">
+                  <span class="icon-facebook"></span>
+                </a>
+                <a href="https://www.instagram.com/prestigeoficial" class="redes">
+                  <span class="icon-instagram"></span>
+                </a>
+                
+                
+              </li>         
+            </ul>
+          </div> 
+          <div class="d-inline  col-12 col-md-2 text-center">
+            <ul>
+              <li><b>NOSOTROS</b></li>
+              <li class="texto_li">CONTACTO</li>  
+              <li class="texto_li">CAMBIOS</li>
+              <li class="texto_li">DEVOLUCIONES</li>         
+            </ul>
+          </div> 
+          <div class="d-inline  col-12 col-md-3 text-center">
+            <ul>
+              <li><b>AYUDA</b></li>
+              <li class="texto_li">PREGUNTAS FRECUENTES</li>  
+              <li class="texto_li">TERMINOS Y CONDICIONES</li>
+              <li class="texto_li">MÉTODOS DE ENVIO</li>  
+              <li class="texto_li">MÉTODOS DE PAGO</li>        
+            </ul>
+          </div> 
+      </div>
+    </div>
+    <div id="footer_final" class="col-12"  style="padding-top:20px; padding-bottom:20px;">
+      <div  class="row justify-content-center ">
+          <div class="d-inline  col-12 col-md-3  ">
+             <p><b>TODOS LOS DERECHOS RESERVADOS</b></p>
+          </div> 
+          <div class="d-inline  col-12 col-md-2 text-center">
+                <img class="card-img-top" src="/media/medios_pago/cyber_monday.png" alt="Foto producto" style="width:70px; ">
+                <img class="card-img-top" src="/media/medios_pago/brandlive.png" alt="Foto producto" style="width:70px; ">
+          </div>
+          <div class="d-inline  col-12 col-md-1 text-center">
+            {% if clave_mayorista_usuario == clave_mayorista %}
+            <button class="btn   mi_whatsapp  " >
+              <a href="https://api.whatsapp.com/send?phone=1524563277" class="btn-wsp" target="_blank">
+                <i class="icon-whatsapp"></i>
+              </a>
+            </button>
+            {% endif %} 
+          </div>
+
+      <div class="row justify-content-end d-none   d-lg-block">       
+        {% if user.is_authenticated %}
+          <div class="d-inline mi_lista_menu1 pt-3  " style="  z-index:4000; ">
+            <a class="pt-1 pb-1 pl-3 pr-3"   href="{% url 'logout'  %}"><b>
+            <i class="fa fa-sign-out  " style="font-size:24px;"  aria-hidden="true"></i>
+            </b></a>
+          </div>
+          <div class="d-inline mi_lista_menu1 pt-3" style="  z-index:4000; ">
+            <a class="pt-1 pb-1 pl-3 pr-3"   href="{% url 'perfil'  %}"  ><b>
+            <i class="fa fa-id-card   " style="font-size:24px;" aria-hidden="true"></i> 
+            </b></a>
+          </div>
+          <div class="d-inline mi_lista_menu1 pt-3" style="  z-index:4000; ">
+            <a class="pt-1 pb-1 pl-3 pr-3"   href="{% url 'mis_pedidos'  %}"  ><b>
+            <i class="fa fa-history   " style="font-size:24px;" aria-hidden="true"></i>
+            </b></a>
+          </div>
+        {% else %}
+          <div class="d-inline mi_lista_menu1 pt-3" style="  z-index:4000; ">
+            <a class="pt-1 pb-1 pl-3 pr-3"   href="{% url 'login'  %}"><b>
+            <i class="fa fa-user " style="font-size:24px;" aria-hidden="true"></i>
+            </b></a>
+          </div>
+          <div class="d-inline mi_lista_menu1 pt-3" style="  z-index:4000; ">
+            <a class="pt-1 pb-1 pl-3 pr-3"  href="{% url 'registro'  %}"><b>Registrarse</b></a>
+          </div>
+        {% endif %}
+          <div class="d-inline mi_lista_menu1 pt-3" style="  z-index:4000; ">
+            <a class="pt-1 pb-1 pl-3 pr-3"  href="{% url 'contacto'  %}"><b>
+            <i class="fa fa-envelope  " style="font-size:24px;" aria-hidden="true"></i>
+            </b></a>
+          </div>
+        </div>  
+
+
+
+
+
+      </div>
+      <div class="row justify-content-end d-block   d-lg-none">       
+        {% if user.is_authenticated %}
+ 
+            <button class="btn icono_movil icono_movil_out" >
+              <a href="{% url 'logout'  %}" class="btn-wsp"  >
+                <i class="fa fa-sign-out "></i> 
+              </a>
+            </button>
+ 
+            <button class="btn icono_movil icono_movil_perfil" >
+              <a href="{% url 'perfil'  %}" class="btn-wsp"  >
+                <i class="fa fa-id-card "></i> 
+              </a>
+            </button>         
+
+            <button class="btn icono_movil icono_movil_pedidos" >
+              <a href="{% url 'mis_pedidos'  %}" class="btn-wsp"  >
+                <i class="fa fa-history"></i> 
+              </a>
+            </button> 
+
+        {% else %}
+            <button class="btn icono_movil icono_movil_login" >
+              <a href="{% url 'login'  %}" class="btn-wsp"  >
+                <i class="fa fa-user"></i> 
+              </a>
+            </button> 
+            <button class="btn icono_movil icono_movil_registro" >
+              <a href="{% url 'registro'  %}" class="btn-wsp"  >
+                <i class="fa fa-registered"></i>
+              </a>
+            </button> 
+        {% endif %}
+ 
+
+            <button class="btn icono_movil icono_movil_contacto" >
+              <a href="{% url 'contacto'  %}" class="btn-wsp"  >
+                <i class="fa fa-envelope"></i>
+              </a>
+            </button> 
+
+
+
+      </div>
+    </div>
+    <div id="footer_final" class="col-12"  style="padding-top:20px; padding-bottom:20px; background-color:2f2f2f; height:100px;">
+      <div  class="row justify-content-center ">
+          <div class="d-inline  col-12 col-md-3  ">
+
+          </div>
+      </div>
+    </div>    
+  </div>
+</div>
+{% endblock %}
+

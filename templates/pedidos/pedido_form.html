@@ -1,0 +1,373 @@
+{% extends "plantilla_tienda.html" %}
+
+{% load static %}
+{% block carro %}
+{% load carrito %}
+
+<div class="container">
+    <div class="row">
+        <div class ="col-4 " style=" z-index: 20;
+            background-color:rgb(247, 110, 110); color:#000; padding-top:10px; padding-bottom:10px;
+ 
+            ">
+            <center>
+                <h1>Paso 1</h1>
+                <h3>Datos de quien envia</h3>
+            </center>
+
+        </div> 
+        <div class ="col-4 " style=" z-index: 20;
+            background-color:#1c9c92d0; color:#fff; padding-top:10px; padding-bottom:10px;
+            -moz-box-shadow:5px 5px 5px #333;
+            -webkit-box-shadow:5px 5px 5px #333;
+            box-shadow:5px 5px 5px #333;
+            ">
+            <center>
+                <h1>Paso 2</h1>
+                <h3>Checkout</h3>
+            </center>
+            <center>
+                <h1>
+                    <i class="fas fa-arrow-up"> </i>
+                </h1>
+                <p><b>Estás aquí</b></p>
+            </center>
+        </div> 
+        <div class ="col-4 " style="background-color:rgb(247, 151, 151); padding-top:20px; padding-bottom:20px;">
+            <center>
+                <h1>Paso 3</h1>
+                <h3>Forma de pago</h3>
+            </center>
+        </div> 
+
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class ="col-12 " style="padding-top:50px;  ">
+            <center>
+                <br/> 
+        </center>
+        </div> 
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class ="col-12 col-sm-6 col-md-7 checkout_form">
+            <center><h3>Checkout</h3></center>
+            <form id="contact" action="" method="post" class="col-xs-12">{% csrf_token %} 		
+                <center><h4>Datos de facturación</h4></center>
+                <div class="col-12 form-group" >
+                    <div class="row">  
+                        {{ form.non_field_errors }}
+                        <div class="col-6 fieldWrapper">
+                            {{ form.usuario.errors }}
+                            <label for="{{ form.usuario.id_for_label }}">Usuario:</label>
+                            {{ form.usuario }}
+                        </div>
+                        <div class="col-6 fieldWrapper">
+                            {{ form.nombre.errors }}
+                            <label for="{{ form.nombre.id_for_label }}">Nombre:</label>
+                            {{ form.nombre }}
+                        </div> 
+                        <div class="col-6 fieldWrapper">
+                            {{ form.email.errors }}
+                            <label for="{{ form.email.id_for_label }}">Email:</label>
+                            {{ form.email }}
+                        </div>
+                        <div class="col-6 fieldWrapper">
+                            {{ form.apellido.errors }}
+                            <label for="{{ form.apellido.id_for_label }}">Apellido:</label>
+                            {{ form.apellido }}
+                        </div> 
+
+                        <div class="col-6 fieldWrapper">
+                            {{ form.domicilio.errors }}
+                            <label for="{{ form.domicilio.id_for_label }}">Domicilio:</label>
+                            {{ form.domicilio }}
+                        </div> 
+                        <div class="col-6 fieldWrapper">
+                            {{ form.localidad.errors }}
+                            <label for="{{ form.localidad.id_for_label }}">Localidad:</label>
+                            {{ form.localidad }}
+                        </div> 
+                        <div class="col-6 fieldWrapper">
+                            {{ form.provincia.errors }}
+                            <label for="{{ form.provincia.id_for_label }}">Provincia:</label>
+                            {{ form.provincia }}
+                        </div> 
+                        <div class="col-6 fieldWrapper">
+                            {{ form.codigo_postal.errors }}
+                            <label for="{{ form.codigo_postal.id_for_label }}">C.P.:</label>
+                            {{ form.codigo_postal }}
+                        </div> 
+                        <div class="col-6 fieldWrapper">
+                            {{ form.telefono.errors }}
+                            <label for="{{ form.telefono.id_for_label }}">Telefono:</label>
+                            {{ form.telefono }}
+                        </div> 
+                        <div class="col-6 fieldWrapper">
+                            {{ form.documento.errors }}
+                            <label for="{{ form.documento.id_for_label }}">Documento:</label>
+                            {{ form.documento }}
+                        </div> 
+                        <br/><hr/>
+                        <center><h4>Datos Factura A/E</h4></center>
+
+                        <div class="col-6 fieldWrapper">
+                            {{ form.tipo.errors }}
+                            <label for="{{ form.tipo.id_for_label }}">Tipo de factura:</label>
+                            {{ form.tipo }}
+                            <span id="spancuit"></span>
+                        </div> 
+
+                        
+                        <div class="col-6 fieldWrapper">
+                            {{ form.cuil_cuit.errors }}
+                            <label for="{{ form.cuil_cuit.id_for_label }}">Cuit:</label>
+                            {{ form.cuil_cuit }}
+                            <span id="spancuit"></span>
+                        </div> 
+                        <div class="col-6 fieldWrapper">
+                            {{ form.condicion_afip.errors }}
+                            <label for="{{ form.condicion_afip.id_for_label }}">Condición frente AFIP:</label>
+                            {{ form.condicion_afip }}
+                            <span id="spancuit"></span>
+                        </div> 
+                        <div class="col-6 fieldWrapper">
+                            {{ form.razon_social.errors }}
+                            <label for="{{ form.razon_social.id_for_label }}">Razón Social:</label>
+                            {{ form.razon_social }}
+                            <span id="spancuit"></span>
+                        </div> 
+                        <div class="col-6 fieldWrapper">
+                            {{ form.domicilio_comercial.errors }}
+                            <label for="{{ form.domicilio_comercial.id_for_label }}">Domicilio Comercial:</label>
+                            {{ form.domicilio_comercial }}
+                            <span id="spancuit"></span>
+                        </div> 
+    
+ 
+
+                        <br/><hr/>
+                        <center><h4>Enviar a Otra Persona</h4></center>
+                        <div class="col-12 fieldWrapper">
+                            {{ form.envio_otro.errors }}
+                            <label for="{{ form.envio_otro.id_for_label }}">Enviar a otro:</label>
+                            {{ form.envio_otro }}
+                            
+                        </div> 
+                        <div id="parte_oculta"> <!----> 
+                            <div class="row"  >
+                            
+                                <div class="col-6 fieldWrapper1" >
+                                    {{ form.nombre_apellido_recibe.errors }}
+                                    <label for="{{ form.nombre_apellido_recibe.id_for_label }}">Nombre:</label>
+                                    {{ form.nombre_apellido_recibe }}
+                                    
+                                </div> 
+                                <div class="col-6 fieldWrapper">
+                                    {{ form.documento_recibe.errors }}
+                                    <label for="{{ form.documento_recibe.id_for_label }}">Documento:</label>
+                                    {{ form.documento_recibe }}
+                                    
+                                </div> 
+                                <div class="col-6 fieldWrapper">
+                                    {{ form.domicilio_recibe.errors }}
+                                    <label for="{{ form.domicilio_recibe.id_for_label }}">Domicilio:</label>
+                                    {{ form.domicilio_recibe }}
+                                    
+                                </div>   
+                                <div class="col-6 fieldWrapper">
+                                    {{ form.provincia_recibe.errors }}
+                                    <label for="{{ form.provincia_recibe.id_for_label }}">Provincia:</label>
+                                    {{ form.provincia_recibe }}
+                                
+                                </div>  
+                                <div class="col-6 fieldWrapper">
+                                    {{ form.localidad_recibe.errors }}
+                                    <label for="{{ form.localidad_recibe.id_for_label }}">Localidad:</label>
+                                    {{ form.localidad_recibe }}
+                                    
+                                </div>  
+                                <div class="col-6 fieldWrapper">
+                                    {{ form.codigo_postal_recibe.errors }}
+                                    <label for="{{ form.codigo_postal_recibe.id_for_label }}">CP:</label>
+                                    {{ form.codigo_postal_recibe }}
+                                    
+                                </div>  
+                                <div class="col-12 fieldWrapper">
+                                    {{ form.telefono_recibe.errors }}
+                                    <label for="{{ form.telefono_recibe.id_for_label }}">Teléfono:</label>
+                                    {{ form.telefono_recibe }}
+                                    
+                                </div> 
+                            </div>
+                        </div>  
+                        <!--<div class="fieldWrapper">
+                            {{ form.mensaje.errors }}
+                            <label for="{{ form.mensaje.id_for_label }}">Mensaje:</label>
+                            {{ form.mensaje }}
+                        </div>-->
+
+
+                    </div>     
+                </div> 
+                <div class="row justify-content-between">
+                    <div class="col-12"><br/><hr/></div>
+                    <div class="col-6">
+                        <a href="{% url 'perfil_paso1'  %}"   class="btn btn-danger border rounded   float-right  ">
+                            <i class="fa fa-caret-left"></i>  Anterior (Modificar Datos) 
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <button id="form_env" type="submit"  class=" col-12 btn btn-danger" style="padding-right:30px; width: 100%;">
+                            Siguiente (Forma de Pago) <i class="fa fa-caret-right"></i> 
+                        </button>
+                    </div>
+                </div>  
+                <br/>
+            </form>       
+        </div>
+        <div class ="col-12 col-sm-6 col-md-5 pedido_a_realizar"  >
+            <div class ="row  ">
+                <div class="d-inline text-center col-12 pt-1"  >
+                    <h3>Datos de Facturación</h3><br/>
+                </div> 
+                <div class="d-inline text-center col-6 pt-1"  >
+                    <b>Prod.</b>
+                </div> 
+                <div class="d-inline text-center col-2 pt-1"  >
+                    <b>Cant.</b>
+                </div> 
+                <div class="d-inline text-center col-3 pt-1"  >
+                    <b>Subtotal ($)</b>
+                </div> 
+            </div> 
+            <hr/> 
+            {% for producto in los_productos %}
+                <div class ="row  ">
+                    <div class="d-inline text-center col-6 pt-1"  >
+                        <b>{{producto.name}}</b>
+                    </div> 
+                    <div class="d-inline text-center col-2 pt-1"  >
+                        <b> {{producto | carro_cantida:request.session.carro}}</b>
+                    </div> 
+                    <div class="d-inline text-center col-3 pt-1"  >
+                        {{producto|precio_total_producto:request.session.carro}}
+                    </div> 
+                </div>
+            {% endfor %}
+            <hr/>     
+            <div class="row justify-content-end">
+                <div class="d-inline text-center col-3 pt-1" >
+                    <h3>Total:</h3>
+                </div>
+                <div class="d-inline text-center col-3 pt-1" >
+                    <h3>{{los_productos|precio_final:request.session.carro}}</h3>
+                </div>
+            </div>
+            <hr/> 
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <center><h4>Medios de Pago</h4></center>
+                </div>  
+                <div class="d-inline mi_lista_menu1 pt-3">
+                    <img class="card-img-top" src="/media/medios_pago/visa_logo.png" alt="Foto producto" style="width:50px; ">
+                    <img class="card-img-top" src="/media/medios_pago/american_express.png" alt="Foto producto" style="width:50px; ">
+                    <img class="card-img-top" src="/media/medios_pago/master_card.png" alt="Foto producto" style="width:50px; ">
+                    <img class="card-img-top" src="/media/medios_pago/mercado_pago.jpg" alt="Foto producto" style="width:50px; ">
+                </div> 
+            </div>        
+            <hr/> 
+            <div class="row">
+                <div class="col-12">
+                    <p>
+                        Sus datos personales se utilizarán para procesar su pedido, 
+                        respaldar su experiencia en este sitio web y para otros fines descritos 
+                        en nuestras <a href="{% url 'politica'  %}"><span>política de privacidad</span></a>.
+                    </p>
+                </div>
+                <div class="col-2 form-check">
+ 
+                    <input id="terminos"  type="checkbox" class="form-check-input" value="" style="margin-left: 20px;"> 
+ 
+                </div>
+                <div class="col-10 form-check">
+                    <p  >
+                      He leído y acepto los términos términos y condiciones *  
+                    </p>
+                </div>
+                <div id="aprobar" class="col-10 form-check ">
+
+                    <h1 style="color:#1c9c92d0; padding-left:25px; text-shadow:5px 5px 5px #000000;">
+                        <i class="fas fa-arrow-up"> </i>
+                    </h1>
+                    <p  style="
+                            background-color:#1c9c92d0; color:#fff;
+                            border:none 5px #000000;
+                            -moz-border-radius-topleft: 11px;
+                            -moz-border-radius-topright:11px;
+                            -moz-border-radius-bottomleft:11px;
+                            -moz-border-radius-bottomright:11px;
+                            -webkit-border-top-left-radius:11px;
+                            -webkit-border-top-right-radius:11px;
+                            -webkit-border-bottom-left-radius:11px;
+                            -webkit-border-bottom-right-radius:11px;
+                            border-top-left-radius:11px;
+                            border-top-right-radius:11px;
+                            border-bottom-left-radius:11px;
+                            border-bottom-right-radius:11px;
+                            padding:7px;
+                            padding-left:15px;
+                            -moz-box-shadow:10px 10px 5px #000000;
+                            -webkit-box-shadow:10px 10px 5px #000000;
+                            box-shadow:10px 10px 5px #000000;
+                    ">
+                      Para continuar debes aceptar los terminos 
+                    </p>
+                </div>
+
+                <div class="col-12 form-check" style="padding-bottom: 30px;">
+                    <div id="terminos_no_leidos">
+                        <div class="row justify-content-center align-self-center ">
+                            <div id="respueta_terminos" class="col-12 align-middle" >
+                                Debe haceptar los terminos para continuar.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!--<button id="realizar_pedido" type="button" class="btn btn-danger" style="width:100%;">
+                        Pagar
+                    </button>-->
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <br/><br/><br/>
+        </div>
+    </div>
+</div>  
+{% endblock %}
+{% block javascript %}
+<script src="https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js"></script> 
+<script type="text/javascript" src="{% static 'js/juan_ajax.js' %}"></script>
+
+<script>
+$("#id_envio_otro").click(function(){
+    $("#parte_oculta").toggle();
+});
+
+$("#terminos").click(function(){
+    $("#form_env").toggle();
+    $("#form_env_nada").toggle();
+    $("#aprobar").toggle();
+});
+</script>
+{% endblock %}
+
+

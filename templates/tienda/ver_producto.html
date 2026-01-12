@@ -1,0 +1,266 @@
+{% extends "plantilla_tienda.html" %}
+{% load static %}
+{% block title %}Tienda - Liquidambar Almacen Natural{% endblock %}
+{% block tienda %}
+{% load carrito %}
+
+
+<div class="container mt-3">
+  <div class="row">
+    <!-- *********************************
+    * VER ruta dEL PRODUCTO
+    ********************************** -->
+    <div id="productos" class="col-12 col-lg-10 mx-auto p-0 ">
+      <div class="row">
+        <div id = "ruta_tienda" class="col-12 pb-3"> 
+          {% if ruta_en_tienda_categoria %}
+            {{ruta_en_tienda_categoria|upper}}
+            {% if ruta_en_tienda_tipologia %} 
+              |  {{ruta_en_tienda_tipologia|upper}} 
+              {% if ruta_en_tienda_talle %} 
+              | TALLE: {{ruta_en_tienda_talle}}
+              {% endif %}
+            {% endif %}
+          {% endif %}
+          </div>
+      </div>   
+    <!-- *********************************
+    * VER EL PRODUCTO
+    ********************************** -->
+    <div class="col-12">  
+        <!-- ***********************************************************************************
+          *************** Modal 
+        ************************************************************************************* -->
+        <div id="p{{producto.id}}"   >
+          <div>
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">{{producto.nombre}}</h4>         
+              </div>
+              <div class="modal-body">
+                <div class ="row">
+                  <!--******************************************************
+                  * IMAGENES DEL COSTADO
+                  * ****************************************************-->
+                  <div class="col-2 col-md-2  ">
+                    {% for imagenes in imagenes%}
+                      {% if producto.id == imagenes.producto.id %}
+                        <img class="card-img-top pb-1 img_lat" src="/media/{{imagenes.imagen}}" alt="{{imagenes.nombre}}" style="width:100%; ">
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <!--******************************************************
+                  * IMAGEN Y DATOS DE COSTO
+                  * ****************************************************-->
+                  <div id="img_sup" class="col-10 col-md-5">
+                    
+                    <div   class="d-block d-md-none d-lg-none  ">
+                        <img src="/media/{{producto.imagen}}" alt="{{producto.nombre}}" style="width:100%; ">
+                    </div>                                     
+                    <div  class=" img-zoom-container  d-none d-md-block d-lg-block ">
+                      <div class="img-zoom-lens card-img-top pb-1 card-img-top">
+                        <img class="img_zom" src="/media/{{producto.imagen}}" alt="{{producto.nombre}}" style="width:50%; ">
+                        <div class="img-zoom-result " ></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--******************************************************
+                  * SELECCIÓN DE PRODUCTO PARA CARRITO
+                  * ****************************************************-->
+                  <div class="col-12 col-md-5">
+                    <div class="card-body p-2 ">
+                      <p class="card-text text-center"><b>{{producto.name}}</b></p>
+                      <hr/>
+                      <p class="card-text text-center">Descripción:&nbsp; {{producto.descripcion}}</p>
+                      <hr/>
+                      <p class="card-text text-center">Composición:&nbsp; {{producto.composicion}}</p>
+                      <hr/>
+                    </div>  
+                  </div>
+                  <div class="col-12 col-md-12">
+                    <!--<div class="col-12 col-md-12">
+                      <button type="button" class="btn btn-danger lista_cuidados" style="width:100%;">Cuidados</button>
+                    </div>-->
+                    <div class="col-12 col-md-12 ver_cuidados">
+                      <table class="table  table-hover text-center">
+                        <tbody>
+                          {% for cuidados in cuidados %}
+                            {% if cuidados.producto.id == producto.id %}
+                              <tr><td>{{cuidados.cuidado}}</td></tr>
+                            {% endif %}
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                      <hr/>
+                    </div>
+                    <hr/>
+                    <form class="form_talle">
+                          <div class ="row  ">
+                              <div class="d-inline text-center col-3 pt-1"  >
+                                  <b>$</b>
+                              </div> 
+                              <div class="d-inline text-center col-3 pt-1"  >
+                                  <b><span class="icon-carrito"></span></b>
+                              </div> 
+                          </div>    
+                          {% for cada_producto in cada_producto %} 
+                            {% if cada_producto.articulo == producto.articulo %}  
+                              <div class ="row ver_stock  ">         
+                                <div class="d-inline text-center col-3 pt-1"  >
+                                  {{cada_producto.precio}}    <!--{{cada_producto|precio_total_producto:request.session.carro}}-->
+                                </div>   
+                                <div class="d-inline text-center col-3 pt-1"  >
+                                  <input type="submit"  hidden class="col-12 vervalor" value="1"/>
+                                  <input type="submit"  hidden class="col-12 verid" value="prestige_{{cada_producto.id}}"/>
+                                  <input type="radio" hidden class="{{cada_producto.id}}" name="ratio_talle" value="{{cada_producto.id}}"> 
+                                  <button type="button" class="btn btn-danger btn-sm agregar_i cp_prestige_{{cada_producto.id}} " style="width:100%; background-color: rgb(6, 85, 85);"><span class="icon-carrito"></span>Agregar</button>
+                                </div> 
+                              </div>
+                            {% endif %}
+                          {% endfor %}
+                          <div class ="row  ">
+                              <div class="d-inline text-center col-12 pt-1"  >  
+                                <hr/>
+                              </div> 
+                          </div>
+                      <button type="button" class="btn btn-danger btn-sm boton_carrito" style="width:100%; background-color: rgb(6, 85, 85)">
+                        <span class="icon-carrito"></span>Ir a Carrito
+                      </button>  
+                    </form>
+                    <hr/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+        <!-- ***********************************************************************************
+          *************** FIN Modal 
+        ************************************************************************************* -->
+         
+      </div>
+    </div>   
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12"  >
+      <br/><br/><br/> 
+    </div>
+  </div>
+</div>
+ 
+{% endblock %}
+{% block javascript %}
+<script src="https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js"></script> 
+<script type="text/javascript" src="{% static 'js/juan_ajax.js' %}"></script>
+
+<script>
+$(".cont_img").mouseover(function() {
+  $(this).parent().find('.mi_quick_view').css({
+      "display": "block",
+
+    });
+});
+$(".cont_img").mouseout(function() {
+  $(this).parent().find('.mi_quick_view').css({
+      "display": "none",
+    });
+});
+</script>
+<script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+<script>
+    $('.menu_a_t').click(function() {
+      $(this).parent().find('.menu_div_t').toggle();
+    });
+ 
+    $('.lista_cuidados').click(function() {
+      $(this).parent().parent().parent().parent().find('.ver_cuidados').toggle();
+ 
+    });
+</script>
+<script>
+  // SI EL BOTÓN DE SELECCIÓN DE PRODUCTO FUE SELECCIONADO LO INHABILITA
+  for(i = 0; i < localStorage.length; i++){
+    let clave = localStorage.key(i);
+    let valcp;
+    valcp = ".cp_" + clave.toString()
+    $( valcp ).attr("disabled", true);
+  }
+</script>
+<script>
+  $('.img_lat').click(function() {
+      
+      let images = $(this).attr('src');
+      console.log(images);
+      $(this).parent().parent().find('#img_sup img').attr("src",images);
+  });
+  $('.img_zom').mouseover(function() {  
+      let img, lens, result, cx, cy, ancho, alto;
+      lens = $(this).parent().parent().find('.img-zoom-lens');
+      result = $(this).parent().parent().find('.img-zoom-result');
+      img = $(this);
+      ancho = img.width();
+      alto = img.height();
+      console.log("!!!!!");
+      console.log(img);
+      console.log(ancho);
+      console.log(alto);
+      console.log("!!!!!");
+      console.log(result);
+      result.css({
+        "display": "block",
+      });
+
+      /* Calculate the ratio between result DIV and lens: */
+      cx = result.width() / lens.width();
+      cy = result.height() / lens.height();
+      console.log(cx)
+      console.log(cy)
+      cx = 4;
+      cy = 4;
+      /* Set background properties for the result DIV */
+      result.css('background-image', 'url(' + $(this).attr("src") + ')');
+      result.css("background-size",(ancho*cx)+"px " + (alto*cy) + "px");
+      
+      img.on( "mousemove touchmove", function(e) {
+        let pos, x, y, offset;
+        offset = $(this).offset();
+        e.preventDefault();
+        //console.log( e.target );
+        console.log("holaaaaaa");
+        x = e.pageX - offset.left
+        y = e.pageY - offset.top
+        console.log(e.pageX - offset.left);
+        console.log(e.pageY - offset.top);
+        xr = -x
+        yr = -y
+        console.log(xr);
+        console.log(yr);
+        result.css({'background-repeat': 'no-repeat'});
+        result.css("background-position",(xr*cx)+"px " + (yr*cy) + "px");
+        //result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+      } );
+
+  }).mouseout(function() {
+      $('.img-zoom-result').css({
+      "display": "none",
+    });
+  });
+
+</script>
+<script>
+  $( ".men_cat_tit2" ).click(function() {
+    $(this).parent().find('.men_cat_tit2_desc').toggle();
+    $(this).parent().find('.fa-caret-right').toggle();
+    $(this).parent().find('.fa-caret-down').toggle();
+    $(this).parent().find('.men_cat_tit2 a').toggle();  
+  });
+</script>
+{% endblock %}

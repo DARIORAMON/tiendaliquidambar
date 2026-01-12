@@ -1,0 +1,413 @@
+{% extends "plantilla.html" %}
+
+{% load static %}
+{% block carro %}
+{% load carrito %}
+
+<div class="container">
+
+  <!-- The Modal -->
+  <div class="modal" id="mayorista">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Mayorista</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class ="row justify-content-around">
+                    {% if user.is_authenticated %}
+                    {% else %}
+                        <div>
+                            <a href="{% url 'login' %}">
+                                <button id="login_m" type="button" class="btn btn-danger"  >
+                                    Login
+                                </button>
+                            </a>
+                        </div><!--
+                        <div>
+                            <button id="registrarme_m" type="button" class="btn btn-danger"  >
+                                Cambiar Clave
+                            </button>
+                        </div>-->
+                        <div>
+                            <a href="{% url 'registro' %}">
+                                <button id="registrarme_m" type="button" class="btn btn-danger"  >
+                                    Registrarme
+                                </button>
+                            </a>
+                        </div>
+                    {% endif %}
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <div class ="row justify-content-around">
+                        {% if user.is_authenticated %}
+                        <div class="col-12">
+                            <p>Para accecer a la compra mayorista debe de tener un usuario y 
+                            tener la clave mayorista de la semana. Si su clave no está actualizada
+                            ingresela para acceder a los descuentos.</p>
+                        </div> 
+                        {% else %}
+                        <div class="col-12">
+                            <p>Para accecer a la compra mayorista debe de tener un usuario y 
+                            tener la clave mayorista de la semana. Si su clave no está actualizada
+                            <b style="color:#f00;">luego de registrarse</b> regrese aquí 
+                            e ingrese la clave el campo que aparecerá y acceda a nuestros descuentos.</p>
+                        </div> 
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                        <div class="col-12 col-md-8">
+                        <form action="/action_page.php">
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Actualice la Clave Mayorista" id="actualizar_c">
+                            </div>
+                        </form>
+                        </div> 
+                        <div id="resulado_actualizar_clave" style="background-color:#f00; color:#fff" class="col-12 col-md-8"> 
+                        </div>  
+                        {% endif %}        
+                    </div>
+                </div>     
+            </div>
+        </div>
+  </div>
+</div> 
+
+<div class="container">
+
+    <!-- The Modal -->
+    <div class="modal" id="mayorista">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Mayorista</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+
+
+                    <div class ="row justify-content-around">
+
+                    {% if user.is_authenticated %}
+
+                    {% else %}
+                        <div>
+                            <a href="{% url 'login' %}">
+                                <button id="login_m" type="button" class="btn btn-danger"  >
+                                    Login
+                                </button>
+                            </a>
+                        </div><!--
+                        <div>
+                            <button id="registrarme_m" type="button" class="btn btn-danger"  >
+                                Cambiar Clave
+                            </button>
+                        </div>-->
+                        <div>
+                            <a href="{% url 'registro' %}">
+                                <button id="registrarme_m" type="button" class="btn btn-danger"  >
+                                    Registrarme
+                                </button>
+                            </a>
+                        </div>
+                    {% endif %}
+
+
+
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+
+                    <div class ="row justify-content-around">
+                        {% if user.is_authenticated %}
+                        <div class="col-12">
+                            <p>Para accecer a la compra mayorista debe de tener un usuario y 
+                            tener la clave mayorista de la semana. Si su clave no está actualizada
+                            ingresela para acceder a los descuentos.</p>
+                        </div> 
+                        {% else %}
+                        <div class="col-12">
+                            <p>Para accecer a la compra mayorista debe de tener un usuario y 
+                            tener la clave mayorista de la semana. Si su clave no está actualizada
+                            <b style="color:#f00;">luego de registrarse</b> ingresela para acceder a los descuentos.</p>
+                        </div> 
+                        {% endif %}
+
+                        <div class="col-12 col-md-8">
+                        <form action="/action_page.php">
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Actualice la Clave Mayorista" id="email">
+                            </div>
+                        </form>
+                        </div>          
+                    </div>
+
+
+
+                </div>     
+            </div>
+        </div>
+    </div>
+  </div>  
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 p-0">
+            {% if clave_mayorista_usuario == clave_mayorista %}
+            <h1   style="background-color:#f00; color:#fff; font-weight: 100;">Compra Mayorista</h1>
+            {% else %}
+            <h1   style="background-color:#f00; color:#fff; font-weight: 100;">Compra Minorista</h1>
+            {% endif %} 
+        </div>
+    </div>
+</div>
+
+
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="row justify-content-start ">
+        <div class="d-inline mi_lista_menu1 pt-3">
+            {% if datos_para_imagen.imagen %}
+                <img  src="/media/{{datos_para_imagen.imagen}}"    alt="{{usuario.nombre}}" class="img-thumbnail" style="width:50px; height: auto;"/>
+            {% else %}
+                <img  src="/media/usuario/defecto.png"    alt="{{usuario.nombre}}" class="img-thumbnail" style="width:50px; height: auto;"/>
+            {% endif %}
+        </div>
+        <div class="d-inline mi_lista_menu1 pt-3">
+            <h3>&nbsp;&nbsp;Hola:&nbsp; {{request.user}}</h3>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+
+
+
+<div class="container">
+    <div class="border rounded p-4 m-4">
+        <div class="d-flex justify-content-between">
+            <div>        
+ 
+            </div>
+            <div>
+                <a class="navbar-brand mb-3" href="{% url 'tienda'  %}">
+                    <button type="button" class="btn btn-danger btn-sm" style="width:100%;">
+                        Seguir comprando
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <!-- *******************************************************
+        *   VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+        *********************************************************-->
+
+
+        <form class="form_talle">
+  
+            <div class ="row  ">
+                <div class="d-inline text-center col-2 pt-1"  >
+                    <b>Prod.</b>
+                </div> 
+                <div class="d-inline text-center col-2 pt-1"  >
+                    <b>$</b>
+                </div> 
+                <div class="d-inline text-center col-4 pt-1"  >
+                    <b>Cant.</b>
+                </div> 
+                <div class="d-inline text-center col-2 pt-1"  >
+                    <b>total</b>
+                </div> 
+                <div class="d-inline text-center col-2 pt-1"  >
+                    <b> </b>
+                </div> 
+            </div>    
+            {% for producto in los_productos %}
+                <div class ="row ver_stock">
+                    <div class="div_ver_c"> 
+                        <h2> {{producto.nombre}}</h2>
+                        <hr/>
+                        <p><b>Quedan en stock: &nbsp;</b> {{producto.stock}}</p>
+                        <hr/>
+                        <p>
+                        <b>Este producto tiene un descunto del: &nbsp;</b>
+                        {% if clave_mayorista_usuario == clave_mayorista %}
+                            ${{producto.descuento_mayorista}}
+                        {% else %}
+                            {{producto.descuento}}%
+                        {% endif %}  
+                        </p>
+                    </div>
+
+                    <div class="d-inline text-center col-2 pt-1" >
+                        <div class="coll-12">
+                            <a href="{% url 'ver_producto' articulo=producto.articulo %}"  >
+                                <img style="width:40px;" class="rounded-circle" src="{{producto.imagen.url}}"/>
+                            </a>
+                        </div>
+                        <div class="coll-12">
+                            
+                        </div>
+                    </div>
+                    <div class="d-inline text-center col-2 pt-1"  >
+                        {% if clave_mayorista_usuario == clave_mayorista %}
+                            ${{producto.precio_mayorista}}
+                        {% else %}
+                            {{producto.precio}}
+                        {% endif %}  
+                    </div>    
+                    <div class="d-inline text-center col-4 pt-1"  >
+                        <div id="prestige_{{producto.id}}" class="car-footer p-0 row no-gutters form-group ">
+                            <input type="submit" value="-" class="  btn  btn-outline-dark btn-sm quitar" />
+                            <input type="text"   class="vervalor form-control-sm text-center " value="{{producto | carro_cantida:request.session.carro}}"/>
+                            <input type="submit" value="+" class="  btn  btn-outline-dark btn-sm agregar" />
+                            <input type="submit"  hidden class="col-12 vervalor" value="0"/>
+                        </div> 
+                    </div>                    
+                    <div class="d-inline text-center col-2 pt-1"  >
+                        {% if clave_mayorista_usuario == clave_mayorista %}
+                            {{producto|precio_total_producto_mayorista:request.session.carro}}
+                        {% else %}
+                            {{producto|precio_total_producto:request.session.carro}}
+                        {% endif %}  
+                    </div> 
+                    <div class="d-inline text-center col-2 pt-1"  >
+                        <button id = "el{{producto.id}}" class="btn btn-danger eliminar_producto">
+                            <span class="icon-bin"></span>    
+                        </button>
+                    </div> 
+                </div>
+            {% endfor %}
+
+            <div class ="row  ">
+                <div class="d-inline text-center col-12 pt-1"  >  
+                  <hr/>
+                </div> 
+            </div>
+            <div class="row justify-content-end">
+                <div class="d-inline text-center col-3 pt-1" >
+                    Total:
+                </div>
+                <div class="d-inline text-center col-3 pt-1" >
+                    {% if clave_mayorista_usuario == clave_mayorista %}
+                        {{los_productos|precio_final_mayorista:request.session.carro}}
+                    {% else %}
+                        {{los_productos|precio_final:request.session.carro}}
+                    {% endif %} 
+                </div>
+            </div>
+            <div class ="row  ">
+                <div class="d-inline text-center col-12 pt-1"  >  
+                  <hr/>
+                </div> 
+            </div> 
+      </form>
+
+        <!-- *******************************************************
+        *   ------------------------------------------------------
+        *********************************************************-->
+         <div class="m-3 p-3  ">
+            {% if user.is_authenticated %}
+            <a href="{% url 'checkout'  %}"   class="btn btn-danger border rounded col-lg-3 float-right  ">
+                Finalizar Compra
+            </a>
+            {% else %}
+            <button type="button" class="btn btn-danger float-right " data-toggle="modal" data-target="#myModal">
+                Comprar
+            </button>
+            {% endif %}
+         </div>
+    </div>
+</div>
+
+
+<div class="container">
+
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Para finalizar</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            Registrate antes de seguir y completa los datos de envío. 
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <a class="pt-1 pb-1 pl-3 pr-3"  href="{% url 'registro'  %}">
+                <button type="button" class="btn btn-danger"  >
+                    Registrarme
+                </button>
+            </a>
+ 
+          </div>     
+        </div>
+      </div>
+    </div>
+  </div>  
+ 
+  
+ 
+
+{% endblock %}
+
+{% block javascript %}
+<script src="https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js"></script> 
+<script type="text/javascript" src="{% static 'js/juan_ajax.js' %}"></script>
+
+<script>
+/*
+  const items = { ...localStorage };
+  console.log(items);
+  Crear(items);*/
+</script>
+<script>
+$(document).ready(function() {
+ $("#MyModal").modal();
+});
+</script>
+
+<script>
+    $(' .div_ver_c').css({
+          "display": "none",
+        });
+    
+    $( ".ver_stock").mouseover(function() {
+      $(this).find('.div_ver_c').css({
+          "display": "block",
+        });
+        $(this).css({
+          "background-color": "#e8e8e8",
+        });       
+    });
+    $( ".ver_stock").mouseout(function() {
+      $(this).find('.div_ver_c').css({
+          "display": "none",
+        });
+        $(this).css({
+          "background-color": "#fff",
+        });   
+    });
+    
+    </script> 
+
+ 
+{% endblock %}
+
+

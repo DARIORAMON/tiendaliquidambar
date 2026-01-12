@@ -1,0 +1,353 @@
+{% extends "plantilla_tienda.html" %}
+{% load static %}
+{% block title %}Tienda - Liquidambar Almacen Natural{% endblock %}
+{% block tienda %}
+{% load carrito %}
+<div id="mi_carrito" >
+{% include "ir_carrito.html" %}
+</div>
+<div class="container mt-3">
+  <div class="row">
+    <!-- *********************************
+    * MENÚ
+    ********************************** -->
+    
+    <!-- *********************************
+    * PÁGINA
+    ********************************** -->
+
+    <div id="productos" class="col-md-12 col-lg-12 mx-auto p-0 ">
+      <div class="row">
+        <div id = "ruta_tienda" class="col-12 pb-3"> 
+          {% if ruta_en_tienda_categoria %} 
+            {{ruta_en_tienda_categoria|upper}}
+            {% if ruta_en_tienda_tipologia %} 
+              |  {{ruta_en_tienda_tipologia|upper}} 
+              {% if ruta_en_tienda_talle %}  
+              | TALLE: {{ruta_en_tienda_talle}}
+              {% endif %}
+            {% endif %}
+          {% endif %}
+          </div>
+      </div>
+      <div class="row mx-auto">
+        {% for producto in productos %}
+        <div class="col-12 col-sm-6 col-md-4 p-2"> 
+          <div class="prod_dest card border-0 mx-auto mb-3 mi_contenedor_imagen  cont_img" >
+            <a href="{% url 'ver_producto' articulo=producto.articulo %}"  >
+              <div class="bg-image hover-zoom">
+                <img class="card-img-top" src="/media/{{producto.imagen}}" alt="Foto producto" style="width:100%; ">
+              </div>  
+            </a>
+      
+            <button style="z-index: 100;" class="btn mi_quick_view  " data-bs-toggle="modal" data-bs-target="#p{{producto.id}}">Vista Rápida</button>
+            <div class="col-12 nombre_precio_img"  ><br/><br/><br/>
+              <div class="row">
+                <div class="col-9 nombre_precio_img2" >
+                  <div class="row justify-content-between">
+                    <div class="col-6 col-sm-5 ">
+                      {{producto.name}}
+                    </div>
+                  </div>
+                   <hr />
+                  <span style="font-size: 20px;">
+                      ${{producto.precio}} 
+                  </span>
+                </div>
+                <div class="col-3" >
+                  <a class="   pt-2 pb-2 pr-2 pl-2" style="background-color: #ffffff;"  href="{% url 'ver_producto' articulo=producto.articulo %}" ><b>
+                    <i class="fa fa-shopping-cart   " style="font-size:30px; padding:0px 10px;    color: #e6e6e6;" aria-hidden="true"></i>
+                    </b></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ***********************************************************************************
+          *************** Modal 
+        ************************************************************************************* -->
+ 
+        
+        <div id="p{{producto.id}}" class="modal fade" role="dialog">
+          <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">{{producto.nombre}}</h4>
+                <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                <div class ="row">
+                  <!--******************************************************
+                  * IMAGENES DEL COSTADO
+                  * ****************************************************-->
+                  <div class="col-2 col-md-2">
+                    {% for imagenes in imagenes%}
+                      {% if producto.id == imagenes.producto.id %}
+                        <img class="card-img-top pb-1 img_lat" src="/media/{{imagenes.imagen}}" alt="{{imagenes.nombre}}" style="width:50%; ">
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  
+                  <!--******************************************************
+                  * IMAGEN Y DATOS DE COSTO
+                  * ****************************************************-->
+                  <div id="img_sup" class="col-10 col-md-5  ">
+                    <div  class="d-block d-md-none d-lg-none">
+                      <img src="/media/{{producto.imagen}}" alt="{{producto.nombre}}" style="width:100%; ">
+                    </div>                                     
+                    <div  class=" img-zoom-container  d-none d-md-block d-lg-block">
+                      <div class="img-zoom-lens card-img-top pb-1 card-img-top">
+                        <img class="img_zom" src="/media/{{producto.imagen}}" alt="{{producto.nombre}}" style="width:50%; ">
+                        <div class="img-zoom-result " ></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!--******************************************************
+                  * SELECCIÓN DE PRODUCTO PARA CARRITO
+                  * ****************************************************-->
+                  <div class="col-12 col-md-5">
+                    <div class="card-body p-2 ">
+                      <p class="card-text text-center"><b>{{producto.name}}</b></p>
+                      <hr/>
+                      <p class="card-text text-center">Descripción:&nbsp; {{producto.descripcion}}</p>
+                      <hr/>
+                      <p class="card-text text-center">Composición:&nbsp; {{producto.composicion}}</p>
+                      <hr/>
+                    </div>  
+                  </div>
+                  <div class="col-12 col-md-12">
+                    <div class="col-12 col-md-12 mb-4 d-block   d-lg-none ">
+                      <p class="card-text text-center">
+                        {%for catimg in producto.categoria.all %}
+                          {% if catimg.nombre == "Diamond" or catimg.nombre == "Essencial" or catimg.nombre == "Jogger" or catimg.nombre == "Luxury" or catimg.nombre == "Sport Action"%}
+                            Línea:&nbsp;<img class="card-img-top" src="/media/{{catimg.imagen}}" alt="Foto producto" style="width:30%; ">
+                          {% endif %}
+                        {% endfor %}
+                      </p>
+                    </div>
+                     <!-- <div class="col-12 col-md-12">
+                      <button type="button" class="btn btn-danger lista_cuidados" style="width:100%; background-color: aqua;">Cuidados</button>
+                    </div>-->
+                    <div class="col-12 col-md-12 ver_cuidados">
+                      <table class="table  table-hover text-center">
+                        <tbody>
+                          {% for cuidados in cuidados %}
+                            {% if cuidados.producto.id == producto.id %}
+                              <tr><td>{{cuidados.cuidado}}</td></tr>
+                            {% endif %}
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                      <hr/>
+                    </div>
+                    <hr/>
+                    <form class="form_talle">
+                      <div class ="row  ">
+                          <div class="d-inline text-center col-3 pt-1"  >
+                              <b>$</b>
+                          </div> 
+                          <div class="d-inline text-center col-3 pt-1"  >
+                              <b><span class="icon-carrito"></span></b>
+                          </div> 
+                      </div>    
+                      {% for cada_producto in cada_producto %} 
+                        {% if cada_producto.articulo == producto.articulo %}  
+                          <div class ="row ver_stock  ">         
+                            <div class="d-inline text-center col-3 pt-1"  >
+                              {{cada_producto.precio}}    <!--{{cada_producto|precio_total_producto:request.session.carro}}-->
+                            </div>   
+                            <div class="d-inline text-center col-3 pt-1"  >
+                              <input type="submit"  hidden class="col-12 vervalor" value="1"/>
+                              <input type="submit"  hidden class="col-12 verid" value="prestige_{{cada_producto.id}}"/>
+                              <input type="radio" hidden class="{{cada_producto.id}}" name="ratio_talle" value="{{cada_producto.id}}"> 
+                              <button type="button" class="btn btn-danger btn-sm agregar_i cp_prestige_{{cada_producto.id}} " style="width:100%; background-color: rgb(6, 85, 85);"><span class="icon-carrito"></span>Agregar</button>
+                            </div> 
+                          </div>
+                        {% endif %}
+                      {% endfor %}
+                      <div class ="row  ">
+                          <div class="d-inline text-center col-12 pt-1"  >  
+                            <hr/>
+                          </div> 
+                      </div>
+                  <button type="button" class="btn btn-danger btn-sm boton_carrito" style="width:100%; background-color: rgb(6, 85, 85);">
+                    <span class="icon-carrito"></span>Ir a Carrito
+                  </button>  
+                </form>
+                    <hr/>  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+        <!-- ***********************************************************************************
+          *************** FIN Modal 
+        ************************************************************************************* -->
+        {% endfor %}
+      </div>
+    </div>
+    {% if lo_que_veo == "0" %}   
+    <div class="row reflexion justify-content-center align-items-center  " style="padding-top:20px;">   
+      <div class="col-8  " style="padding-top:40px; padding-bottom: 40px;">
+        <div>
+          <center>
+              <h1 style="color:#1c9c92d0;">No hay un producto con esas caracteristicas!
+                <i class="fa-solid fa-telescope"></i></h1>
+                <p>Puedes seguir buscando en nuestra tienda</p>
+          </center>    
+        </div>
+      </div>  
+   </div>
+    {% endif %}
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12"  >
+      <br/><br/><br/>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block javascript %}
+<script src="https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js"></script> 
+<script type="text/javascript" src="{% static 'js/juan_ajax.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/minified/gsap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/minified/ScrollTrigger.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+
+<script>
+const burgerLines = document.querySelectorAll('.prod_dest')
+
+burgerLines.forEach((prod_dest) => {
+  prod_dest.addEventListener('mouseover', (e) => {
+    //console.log('The burger is hovered')
+    TweenMax.to(prod_dest, 0.2, {
+      scaleX:1.05, scaleY:1.05, scaleZ:1.3,
+    })
+  })
+  prod_dest.addEventListener('mouseout', (e) => {
+    //console.log('The burger is hovered')
+    TweenMax.to(prod_dest, 0.2, {
+      scaleX:1, scaleY:1, scaleZ:1,
+    })
+  }) 
+})
+</script>
+<script>
+$(".cont_img").mouseover(function() {
+  $(this).parent().find('.mi_quick_view').css({
+      "display": "block",
+
+    });
+});
+$(".cont_img").mouseout(function() {
+  $(this).parent().find('.mi_quick_view').css({
+      "display": "none",
+
+    });
+});
+</script>
+<script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+
+
+<script>
+    $('.menu_a_t').click(function() {
+      $(this).parent().find('.menu_div_t').toggle();
+ 
+    });
+    $('.lista_talles').click(function() {
+      $(this).parent().parent().parent().parent().find('.ver_talles').toggle();
+    });
+    $('.lista_cuidados').click(function() {
+      $(this).parent().parent().parent().parent().find('.ver_cuidados').toggle();
+ 
+    });
+</script>
+<script>
+  // SI EL BOTÓN DE SELECCIÓN DE PRODUCTO FUE SELECCIONADO LO INHABILITA
+  for(i = 0; i < localStorage.length; i++){
+    let clave = localStorage.key(i);
+    let valcp;
+    valcp = ".cp_" + clave.toString()
+    $( valcp ).attr("disabled", true);
+  }
+
+</script>
+<script>
+  $('.img_lat').click(function() {
+      
+      let images = $(this).attr('src');
+      console.log(images);
+      $(this).parent().parent().find('#img_sup img').attr("src",images);
+  });
+</script>
+<script>
+  $('.img_zom').mouseover(function() {
+    let img, lens, result, cx, cy, ancho, alto;
+    lens = $(this).parent().parent().find('.img-zoom-lens');
+    result = $(this).parent().parent().find('.img-zoom-result');
+    img = $(this);
+    ancho = img.width();
+    alto = img.height();
+    console.log("!!!!!");
+    console.log(img);
+    console.log(ancho);
+    console.log(alto);
+    console.log("!!!!!");
+    console.log(result);
+    result.css({
+      "display": "block",
+    });
+    /* Calculate the ratio between result DIV and lens: */
+    cx = result.width() / lens.width();
+    cy = result.height() / lens.height();
+    console.log(cx)
+    console.log(cy)
+    cx = 4;
+    cy = 4;
+    /* Set background properties for the result DIV */
+    result.css('background-image', 'url(' + $(this).attr("src") + ')');
+    result.css("background-size",(ancho*cx)+"px " + (alto*cy) + "px");
+    img.on( "mousemove touchmove", function(e) {
+      let pos, x, y, offset;
+      offset = $(this).offset();
+      e.preventDefault();
+      //console.log( e.target );
+      console.log("holaaaaaa");
+      x = e.pageX - offset.left
+      y = e.pageY - offset.top
+      console.log(e.pageX - offset.left);
+      console.log(e.pageY - offset.top);
+      xr = -x
+      yr = -y
+      console.log(xr);
+      console.log(yr);
+      result.css({'background-repeat': 'no-repeat'});
+      result.css("background-position",(xr*cx)+"px " + (yr*cy) + "px");
+    } );
+}).mouseout(function() {
+    $('.img-zoom-result').css({
+    "display": "none",
+  });
+});
+</script>
+
+<script>
+$( ".men_cat_tit2" ).click(function() {
+  $(this).parent().find('.men_cat_tit2_desc').toggle();
+  $(this).parent().find('.fa-caret-right').toggle();
+  $(this).parent().find('.fa-caret-down').toggle();
+  $(this).parent().find('.men_cat_tit2 a').toggle();  
+});
+</script>
+{% endblock %}

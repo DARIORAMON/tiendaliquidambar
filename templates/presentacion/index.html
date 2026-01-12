@@ -1,0 +1,690 @@
+{% extends "plantilla_index.html" %}
+{% load static %}
+{% block title %}Tienda - Liquidambar Almacen Natural{% endblock %}
+{% block index %}
+
+
+ 
+<div class="container-fluid p-0 m-0">
+  <div class="row">
+    <div class="col">
+      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators" >
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner" >
+          {% if carrou_intro %}
+            {% for carrou_intro in carrou_intro|slice:"0:1"  %}
+            <div class="carousel-item active" >
+                <img src="/media/{{carrou_intro.imagen}}" class="d-block " style = "width: 100%; height: 100%; margin: auto;" alt="...">
+                <!--<div class="carousel-caption d-none d-md-block">
+                  ><h5>{{carrou_intro.titulo}}</h5>
+                  <p>{{carrou_intro.descripcion}}</p> 
+                </div>-->
+            </div>
+            {% endfor %}
+            {% for carrou_intro in carrou_intro|slice:"1:3"  %}
+            <div class="carousel-item ">
+                <img src="/media/{{carrou_intro.imagen}}" class="d-block " style = "width: 100%; height: 100%; margin: auto;" alt="...">
+            <!-- <div class="carousel-caption d-none d-md-block" >
+                  <h5>{{carrou_intro.titulo}}</h5>
+                  <p>{{carrou_intro.descripcion}}</p>
+                </div>-->
+            </div>
+            {% endfor %}
+          {% endif %} 
+        <button class="carousel-control-prev"  type ="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" style = "background-color: rgb(20, 226, 164);"  aria-hidden="true"></span>
+          <span class="visually-hidden" >Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" style = "background-color: rgb(20, 226, 164);" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid" style="  background-color:#fff">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8"  >
+      <div id="intro_head_titulo" class="row justify-content-center" >
+        <div class="col-12  intro_titulo"  >
+          <center>
+            <h1 class="display-1 introh1 "  style ="color: aquamarine;">Muchas opciones para elegirnos</h1>
+            <h2 class="display-1 introh2">Tenemos un producto saludable a tu medida, unite 
+              a nuestra familia.</h2>
+          </center>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid" style="  background-color:#fff; padding-bottom:50px;">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8"  >
+      <div id="intro_cpct" class="row justify-content-center ">
+        <div class="col-12 col-md-3" >
+          <div class="row justify-content-around">    
+            <div class="col-2 intro_icon_cpct">
+              <span class="icon-award-solid " style ="color:aqua"></span>
+            </div>
+            <div class="col-10 intro_text_cpct">
+              <h3>Calidad</h3>
+              <p>Los mejores productos nacionales e importados con la más alta calidad. 
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-3" >
+          <div class="row justify-content-around">    
+            <div class="col-2 intro_icon_cpct">
+              <span class="icon-coins-solid" style ="color:aqua"></span>
+            </div>
+            <div class="col-10 intro_text_cpct">
+              <h3>Precio</h3>
+              <p>Tenemos el mejor precio garantizado a través de nuestras ofertas semanales. 
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-3" >
+          <div class="row justify-content-around">    
+            <div class="col-2 intro_icon_cpct">
+              <span class="icon-angellist-brands"style ="color:aqua"></span>
+            </div>
+            <div class="col-10 intro_text_cpct">
+              <h3>Relación</h3>
+              <p>Nos interesa la verdadera relación con nuestros clientes brindando el mejor asesoramiento. 
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-3" >
+          <div class="row justify-content-around">    
+            <div class="col-2 intro_icon_cpct"> 
+              <span class="icon-feather-alt-solid" style ="color:aqua"></span> 
+            </div>
+            <div class="col-10 intro_text_cpct">
+                <h3>Variedad</h3>
+                <p>La variedad es nuestro sinónimo de compromiso con ustedes, si no lo tenemos, te lo conseguimos. 
+                </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+<!------------------------------------
+-- AIRE LIBRE
+-------------------------------------->
+<div id="intro_airelibre" class="container-fluid  ">
+  <div class="row  intro_airel">
+    <div class="col-12 "  >
+      <div  class="row justify-content-center" >
+        <div id="intro_airelibr2" class="col-10 col-lg-8 ">
+          <div class="row justify-content-arround">
+            <div id="intro_airelibr3" class="col-12 col-lg-6">          
+              <div class="row justify-content-around"> 
+                <div id="airel_titulo" class="col-12" >
+                  <center>
+                    <h3 style="color: black;">Viví tu vida de la mejor manera posible!</h3>
+                  </center>
+                </div>
+                {% if aire_libreb_intro %}
+                  {% for aire_libreb_intro in aire_libreb_intro %}
+                  <div class="col-2 intro_aire_icon"> 
+                    <i class=" fa fa-angle-double-right fa-2x"> </i> 
+                  </div>
+                  <div class="col-10 intro_text_airel">
+                      <h6>{{aire_libreb_intro.titulo}}</h6>
+                      <p>{{aire_libreb_intro.descripcion}}</p>
+                  </div>
+                  {% endfor %}
+                {% endif %}
+              </div>
+              <div class="col text-center" >
+                <a href="/tienda" target="_blank" >
+                  <button type="button" class="btn btn-danger" style="background-color: aqua;">Ver productos y ofertas</button> 
+                </a>
+              </div>          
+            </div>
+            <div class="col-12 col-lg-6 p-0" style="background-color: #fff; ">
+              {% if aire_libre_intro %}
+              <img class="card-img-top" src="/media/{{aire_libre_intro.imagen}}" style="width:100%;" alt="Foto producto" style="width:100%; ">
+              {% endif %}   
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+<!------------------------------------
+-- MENÚ ESPECIAL
+------------------------------------>
+<section class="container-fluid " style="  background-color:#fff">
+  <div class="row justify-content-center">
+      <div id="inicio_bac" class="col-12"  >
+        <div class="row justify-content-center">
+          <div class="col-10  m-3" style="padding-top:100px; padding-bottom:100px;  ">
+            <a href="/tienda" target="_blank" >
+              <button id="inicio_tienda" type="button" class="btn btn-danger" style="background-color: aqua;">
+                <h1  class="h5juan">
+                  Ir a tienda
+                </h1>
+              </button>
+            </a>
+          </div>
+        </div>          
+      </div>
+  </div>
+</section>
+<div class="container-fluid" style="  background-color:#fff">
+<div class="row">
+  <div class="col-12">
+    <br/> <br/><br/> 
+  </div>
+</div>
+</div>
+<!------------------------------------
+--  TEMPORADA    
+-------------------------------------->
+<div class="container-fluid" style="  background-color:#fff">
+  <div class="row">
+    <div class="col-12">
+      <br/> <br/><br/> 
+    </div>
+  </div>
+</div>
+<div class="container-fluid" style="  background-color:#fff">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8"  >
+      <div  id="img_lat1" class="row d-block  d-lg-none" >
+        <div class="col-12" >
+          <img class="card-img-top" src="/media/{{temporada_intro.imagen}}" style="width:100%;" alt="Foto producto" style="width:100%; ">
+         </div>
+      </div>
+      <div id="img_lat2" class="row d-none  d-lg-block" >
+        <div class="col-12">
+          <div class="row">
+            <div class="col-6">
+              <img class="card-img-top" src="/media/{{temporada_intro.imagen}}" style="width:100%;" alt="Foto producto" style="width:100%; ">
+             </div>
+            <div class="col-6">
+              <div class="row">
+                <div class="col-12">
+                <center>
+                  <h1>{{temporada_intro.titulo}}</h1>
+                  <p>{{temporada_intro.subtitulo}}</p>
+                </center>
+                </div>
+                <div class="col-12">
+                  <hr/>
+                </div>
+                <div class="col-12">
+                  <div class="row">
+                    <div class="col-6">
+                      <p>{{temporada_intro.descripcion}}</p>
+                    </div>
+                    <div class="col-6">
+                      {{temporada_intro.iframe|safe}}
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+<div class="container-fluid" style="  background-color:#fff">
+  <div class="row">
+    <div class="col-12">
+      <br/> <br/><br/> 
+    </div>
+  </div>
+</div>
+<!------------------------------------
+-- DESTACADOS
+------------------------------------->
+<div class="container-fluid" style="  background-color:#fff">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-auto col-lg-12"  >
+      <div id="intro_destacados" class="row justify-content-center ">
+        {% for prod_dest_intro in prod_dest_intro %}
+        <div class="col-12 col-md-3 intro_dest">
+          <a href="/tienda">
+            <img class="card-img-top" style = "width: 100%; height: 100%;"   src="/media/{{prod_dest_intro.imagen}}" alt="Foto producto">
+            <p style="padding:7 5 5 5; width: 100%;">{{prod_dest_intro.descripcion}} 
+            </p>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>  
+<div class="container-fluid" style="  background-color:#fff">
+  <div class="row">
+    <div class="col-12">
+      <br/> <br/><br/> 
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block javascript %}
+
+<script type="text/javascript" src="{% static 'js/minified/gsap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/minified/ScrollTrigger.min.js' %}"></script>
+<script src="{% static 'js/hover.js' %}"></script>
+<!--
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+<script src="{% static 'js/glide.min.js' %}"  ></script>
+
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+let tl = gsap.timeline({
+  scrollTrigger:{
+    trigger: ".intro_titulo",
+    start: "top 60%",
+    end: "+=300",
+    //markers: true,
+    scrub: 3,
+    //toggleActions: "play pause reverse pause"
+  }
+});
+
+tl.from(".intro_titulo", {
+  opacity:0,
+	y: -55, 
+	duration: 1, 
+}
+);
+// ********************************************************
+let t2 = gsap.timeline({
+  scrollTrigger:{
+    trigger: ".intro_icon_cpct",
+    start: "top 77%",
+    end: "+=300",
+    //markers: true,
+    scrub: 3,
+    //toggleActions: "play pause reverse pause"
+  }
+});
+
+t2.from(".intro_icon_cpct", {
+  opacity:0,
+	x: -50, 
+	duration: 1, 
+}
+);
+// ********************************************************
+let t3 = gsap.timeline({
+  scrollTrigger:{
+    trigger: ".intro_text_cpct",
+    start: "top 77%",
+    end: "+=300",
+    //markers: true,
+    scrub: 3,
+    //toggleActions: "play pause reverse pause"
+  }
+});
+
+t3.from(".intro_text_cpct", {
+  opacity:0,
+	y: 50, 
+	duration: 1, 
+}
+);
+// ***********************************************************
+const burgerLines = document.querySelectorAll('.intro_dest')
+
+burgerLines.forEach((intro_dest) => {
+  intro_dest.addEventListener('mouseover', (e) => {
+    console.log('The burger is hovered')
+    TweenMax.to(intro_dest, 0.2, {
+      scaleX:1.05, scaleY:1.05, scaleZ:1.3,
+    })
+  })
+  intro_dest.addEventListener('mouseout', (e) => {
+    console.log('The burger is hovered')
+    TweenMax.to(intro_dest, 0.2, {
+      scaleX:1, scaleY:1, scaleZ:1,
+    })
+  }) 
+})
+// ********************************************************
+let t4 = gsap.timeline({
+  scrollTrigger:{
+    trigger: "#airel_titulo",
+    start: "top 60%",
+    end: "+=300",
+    //markers: true,
+    scrub: 3,
+    //toggleActions: "play pause reverse pause"
+  }
+});
+
+t4.from("#airel_titulo", {
+  opacity:0,
+	y: -100, 
+	duration: 1, 
+}
+);
+
+// ********************************************************
+let t5 = gsap.timeline({
+  scrollTrigger:{
+    trigger: ".intro_aire_icon",
+    start: "top 77%",
+    end: "+=300",
+    //markers: true,
+    scrub: 3,
+    //toggleActions: "play pause reverse pause"
+  }
+});
+
+t5.from(".intro_aire_icon", {
+  opacity:0,
+	x: -50, 
+	duration: 1, 
+}
+);
+// ********************************************************
+let t6 = gsap.timeline({
+  scrollTrigger:{
+    trigger: ".intro_text_airel",
+    start: "top 77%",
+    end: "+=300",
+    //markers: true,
+    scrub: 3,
+    //toggleActions: "play pause reverse pause"
+  }
+});
+
+t6.from(".intro_text_airel", {
+  opacity:0,
+	y: 50, 
+	duration: 1, 
+}
+);
+// ********************************************************
+let t7 = gsap.timeline({
+  scrollTrigger:{
+    trigger: "#airel_prestige",
+    start: "top 77%",
+    end: "+=300",
+    //markers: true,
+    scrub: 3,
+    //toggleActions: "play pause reverse pause"
+  }
+});
+
+t7.from("#airel_prestige", {
+  opacity:0,
+	x: 250, 
+	duration: 1, 
+}
+);
+
+// ************************************************************
+
+let t7b = gsap.timeline({
+  scrollTrigger:{
+    trigger: ".temporada_prestige",
+    start: "top 77%",
+    end: "+=300",
+    //markers: true,
+    scrub: 3,
+    //toggleActions: "play pause reverse pause"
+  }
+});
+
+t7b.from(".temporada_prestige", {
+  opacity:0,
+	x: -250, 
+	duration: 1, 
+}
+);
+
+
+
+// ***********************************************************
+//intro_mesp
+
+const mesp = document.querySelectorAll('.intro_mesp')
+
+mesp.forEach((intro_mesp) => {
+  intro_mesp.addEventListener('mouseover', (e) => {
+    TweenMax.to(intro_mesp, 0.2, {
+      scaleX:1.05, scaleY:1.05, scaleZ:1.3,
+    })
+  })
+  intro_mesp.addEventListener('mouseout', (e) => {
+    TweenMax.to(intro_mesp, 0.2, {
+      scaleX:1, scaleY:1, scaleZ:1,
+    })
+  }) 
+})
+// *********************************************************
+let t8 = gsap.timeline({
+  scrollTrigger:{
+    trigger: "#intro_lineas_c1",
+    start: "top 60%",
+    end: "+=300",
+    //markers: true,
+    scrub: 3,
+    //toggleActions: "play pause reverse pause"
+  }
+});
+
+t8.from("#intro_lineas_c1", {
+  opacity:0,
+	y: -100, 
+	duration: 1, 
+}
+);
+
+
+// ***********************************************************
+let t9 = gsap.timeline({
+  scrollTrigger:{
+    trigger: ".intro_linea_b",
+    start: "top 60%",
+    end: "+=300",
+    //markers: true,
+    scrub: 3,
+    //toggleActions: "play pause reverse pause"
+  }
+});
+
+t9.from(".intro_linea_b", {
+  opacity:0,
+	y: -100, 
+	duration: 1, 
+}
+);
+
+const intro_lb = document.querySelectorAll('.intro_linea_b')
+
+intro_lb.forEach((intro_linea_b) => {
+  intro_linea_b.addEventListener('mouseover', (e) => {
+    TweenMax.to(intro_linea_b, 0.2, {
+      scaleX:1.05, scaleY:1.05, scaleZ:1.3,
+    })
+  })
+  intro_linea_b.addEventListener('mouseout', (e) => {
+    TweenMax.to(intro_linea_b, 0.2, {
+      scaleX:1, scaleY:1, scaleZ:1,
+    })
+  }) 
+})
+
+// ***********************************************************
+let t10 = gsap.timeline({
+  scrollTrigger:{
+    trigger: "#intro_red_seg",
+    start: "top 60%",
+    end: "+=300",
+    //markers: true,
+    scrub: 3,
+    //toggleActions: "play pause reverse pause"
+  }
+});
+
+t10.from("#intro_red_seg", {
+  opacity:0,
+	x: -100, 
+	duration: 1, 
+}
+);
+// ***********************************************************
+let t11 = gsap.timeline({
+  scrollTrigger:{
+    trigger: "#intro_red_f",
+    start: "top 60%",
+    end: "+=300",
+    //markers: true,
+    scrub: 3,
+    //toggleActions: "play pause reverse pause"
+  }
+});
+
+t11.from("#intro_red_f", {
+  opacity:0,
+	y: 100, 
+	duration: .2, 
+}
+);
+
+// ***********************************************************
+ 
+let t12 = gsap.timeline({
+  scrollTrigger:{
+    trigger: "#intro_red_i",
+    start: "top 60%",
+    end: "+=300",
+    //markers: true,
+    scrub: 3,
+    //toggleActions: "play pause reverse pause"
+  }
+});
+
+t12.from("#intro_red_i", {
+  opacity:0,
+	y: 150, 
+	duration: .2, 
+}
+);
+ 
+
+/*
+const burgerLines = document.querySelectorAll('.intro_dest')
+
+burgerLines.forEach((intro_dest) => {
+  intro_dest.addEventListener('mouseover', (e) => {
+    console.log('The burger is hovered')
+    TweenMax.to(intro_dest, 0.2, {
+      x: -10
+    })
+  })
+  intro_dest.addEventListener('mouseout', (e) => {
+    console.log('The burger is hovered')
+    TweenMax.to(intro_dest, 0.2, {
+      x: 10
+    })
+  }) 
+})
+*/
+
+
+
+
+
+/*
+const introdest = document.querySelector(".intro_dest");
+ 
+const hover = gsap.to(introdest, {
+  scaleX:1.05, scaleY:1.05, scaleZ:1.3,
+  color: "blue",
+  duration: .2,
+  paused: true,
+  ease: "ease-in-out"
+});
+
+ 
+introdest.addEventListener("mouseenter", () => hover.play());
+introdest.addEventListener("mouseleave", () => hover.reverse());
+*/
+ 
+   
+
+</script>
+<!--
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.0/gsap.min.js"></script>
+-->
+	<script>
+		$("#id_fecha").css({'display':'none'});
+		//$("#id_fecha").parent().find("label").css({'display':'none'});
+		$("#id_estado_respuesta").css({'display':'none'});
+		$("#id_estado_respuesta").parent().find("label").css({'display':'none'});
+		
+		
+		$("#formulario_contacto li").css({'list-style':'none'});
+ 
+		//$("#formulario_contacto li label").css({'width':"100%", 'text-align':'center',});
+		//$("#formulario_contacto li input").css({'width':"100%", 'text-align':'center',});
+
+		$("input").css({'width':"100%", 'text-align':'center', 'margin-bottom':'7px'});
+		$("textarea").css({'width':"100%", 'text-align':'center',});
+
+
+		$("#id_nombre").attr("placeholder", "Nombre");
+		$("#id_descripcion").attr("placeholder", "Descripcion");
+		$("#id_mail").attr("placeholder", "Mail");
+		$("#id_telefono").attr("placeholder", "Teléfono");
+		$("#id_captcha_1").attr("placeholder", "Captcha");
+	</script> 
+
+
+
+<script>
+$(document).ready(function(){
+  let ancho_img = $("#img_lat").height();
+    		//alert('El tamaño del div es: ' + $("#img_lat").width() + 'pixels');
+  $("#img_lat2").height(ancho_img);
+ 
+});
+</script>
+
+<script>
+  /*console.log("-----------------------")  
+  valor_altura = $( ".glide" ).height();
+  console.log("-----------------------")
+  console.log(valor_altura)
+  console.log("-----------------------")
+   
+  $( ".background" ).css({
+    "overflow": "hidden",
+ 
+    });*/
+</script>
+{% endblock %}
+
+
+
+ 
+ 
+ 

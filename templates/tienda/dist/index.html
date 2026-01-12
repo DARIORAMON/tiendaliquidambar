@@ -1,0 +1,1894 @@
+{% extends "plantilla.html" %}
+{% load static %}
+{% block title %}Tienda - Prestige{% endblock %}
+{% block tienda %}
+{% load carrito %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+       <br/>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-3">
+  <div class="row">
+    <!-- *********************************
+    * FILTROS
+    ********************************** -->
+    <div class="col-lg-2 mx-auto d-none d-lg-block">
+      <div class="list-group border-left-0  border-right-0">
+        <a href="/" class="list-group-item list-group-item-action border-left-0  border-right-0 todos_prod ">
+          TODOS LOS PRODUCTOS
+        </a>
+        {% for key, value in elementos_menu.items %}
+
+
+          <div class="menu_padre_t">
+          {% if key == "exclusivo" %}
+            <button  class="menu_a_t list-group-item list-group-item-action border-left-0  border-right-0"  >
+              {{key|upper}}  
+            </button>
+            <div class="menu_div_t">
+            <a href="{% url 'categoria' categoria_slug=key %}" class="p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+              Ver Todo
+            </a>
+            {% for key2, value2 in value.items %}
+              {% if key2 == "Buzos" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Calzas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="{% url 'talle' categoria_slug=key tipologia_nombre=key2 talle_nombre=val %}" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Camperas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Ciclistas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Leggings" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Musculosas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Pantalones" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Pescadoras" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Remeras" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Remerones" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Shorts" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Tops" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endfor %}
+            </div>
+
+
+
+          {% elif key == "lo_nuevo" %}
+            <button  class="menu_a_t list-group-item list-group-item-action border-left-0  border-right-0"  >
+              LO NUEVO  
+            </button>
+            <div class="menu_div_t">
+            <a href="{% url 'categoria' categoria_slug=key %}" class="p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+              Ver Todo
+            </a>
+            {% for key2, value2 in value.items %}
+              {% if key2 == "Buzos" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Calzas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="{% url 'talle' categoria_slug=key tipologia_nombre=key2 talle_nombre=val %}" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Camperas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Ciclistas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Leggings" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Musculosas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Pantalones" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Pescadoras" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Remeras" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Remerones" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Shorts" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Tops" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endfor %}
+            </div>
+
+
+
+          {% elif key == "volvio_a_entrar" %} 
+            <button  class="menu_a_t list-group-item list-group-item-action border-left-0  border-right-0"  >
+              VOLVÍO A ENTRAR  
+            </button>
+            <div class="menu_div_t">
+            <a href="{% url 'categoria' categoria_slug=key %}" class="p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+              Ver Todo
+            </a>
+            {% for key2, value2 in value.items %}
+              {% if key2 == "Buzos" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Calzas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="{% url 'talle' categoria_slug=key tipologia_nombre=key2 talle_nombre=val %}" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Camperas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Ciclistas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Leggings" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Musculosas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Pantalones" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Pescadoras" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Remeras" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Remerones" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Shorts" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Tops" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endfor %}
+            </div>
+
+
+          {% elif key == "diamond" %}
+            <button  class="menu_a_t list-group-item list-group-item-action border-left-0  border-right-0" style="background-color:#f00; color:#fff;">
+              <img class="card-img-top" src="/media/linea/logo_diamond.png" alt="Foto producto" >  
+            </button>
+            <div class="menu_div_t">
+            <a href="{% url 'categoria' categoria_slug=key %}" class="p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+              Ver Todo
+            </a>
+            {% for key2, value2 in value.items %}
+              {% if key2 == "Buzos" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Calzas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="{% url 'talle' categoria_slug=key tipologia_nombre=key2 talle_nombre=val %}" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Camperas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Ciclistas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Leggings" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Musculosas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Pantalones" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Pescadoras" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Remeras" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Remerones" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Shorts" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Tops" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endfor %}
+            </div>
+          {% elif key == "essencial" %}
+            <button  class="menu_a_t list-group-item list-group-item-action border-left-0  border-right-0" style="background-color:#f00; color:#fff;">
+              <img class="card-img-top" src="/media/linea/logo_essencial.png" alt="Foto producto" > 
+            </button>
+            <div class="menu_div_t">
+            <a href="{% url 'categoria' categoria_slug=key %}" class="p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+              Ver Todo
+            </a>
+            {% for key2, value2 in value.items %}
+              {% if key2 == "Buzos" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Calzas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="{% url 'talle' categoria_slug=key tipologia_nombre=key2 talle_nombre=val %}" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Camperas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Ciclistas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Leggings" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Musculosas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Pantalones" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Pescadoras" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Remeras" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Remerones" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Shorts" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Tops" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endfor %}
+            </div>
+          {% elif key == "jogger" %}
+            <button  class="menu_a_t list-group-item list-group-item-action border-left-0  border-right-0" style="background-color:#f00; color:#fff;">
+              <img class="card-img-top" src="/media/linea/logo_jogger.png" alt="Foto producto"  > 
+            </button>
+            <div class="menu_div_t">
+            <a href="{% url 'categoria' categoria_slug=key %}" class="p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+              Ver Todo
+            </a>
+            {% for key2, value2 in value.items %}
+              {% if key2 == "Buzos" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Calzas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="{% url 'talle' categoria_slug=key tipologia_nombre=key2 talle_nombre=val %}" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Camperas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Ciclistas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Leggings" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Musculosas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Pantalones" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Pescadoras" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Remeras" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Remerones" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Shorts" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Tops" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endfor %}
+            </div>
+          {% elif key == "luxury" %}
+            <button  class="menu_a_t list-group-item list-group-item-action border-left-0  border-right-0" style="background-color:#f00; color:#fff;">
+              <img class="card-img-top" src="/media/linea/logo_luxury.png" alt="Foto producto"  >  
+            </button>
+            <div class="menu_div_t">
+            <a href="{% url 'categoria' categoria_slug=key %}" class="p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+              Ver Todo
+            </a>
+            {% for key2, value2 in value.items %}
+              {% if key2 == "Buzos" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Calzas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="{% url 'talle' categoria_slug=key tipologia_nombre=key2 talle_nombre=val %}" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Camperas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Ciclistas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Leggings" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Musculosas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Pantalones" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Pescadoras" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Remeras" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Remerones" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Shorts" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Tops" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endfor %}
+            </div>
+          {% elif key == "sport_action" %}
+            <button  class="menu_a_t list-group-item list-group-item-action border-left-0  border-right-0" style="background-color:#f00; color:#fff;">
+              <img class="card-img-top" src="/media/linea/logo_sport_action.png" alt="Foto producto"  >  
+            </button>
+            <div class="menu_div_t">
+            <a href="{% url 'categoria' categoria_slug=key %}" class="p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+              Ver Todo
+            </a>
+            {% for key2, value2 in value.items %}
+              {% if key2 == "Buzos" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Calzas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="{% url 'talle' categoria_slug=key tipologia_nombre=key2 talle_nombre=val %}" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Camperas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Ciclistas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Leggings" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Musculosas" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Pantalones" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Pescadoras" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Remeras" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Remerones" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Shorts" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% elif key2 == "Tops" %}
+                <a href="{% url 'tipologia' categoria_slug=key tipologia_nombre=key2 %}" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                  {{ key2 }}
+                </a>
+                <div class="row justify-content-center ">           
+                  {% for val in value2 %}
+                    <div class="d-inline mi_lista_menu1 ">
+                      <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                        {{val}}
+                      </a> 
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endfor %}
+            </div>
+          {% endif %} 
+          </div>
+        {% endfor %}
+
+
+ 
+        <!--
+        {% for categoria in categorias %}
+        <div class="menu_padre_t">
+          {% if categoria.imagen == "" %}
+          <a href="#" style="background-color:#f2f2f2; color:#000;" class="   p-2 pl-3 list-group-item list-group-item-action border-left-0  border-right-0">
+             {{categoria.nombre|upper}} 
+          </a>
+          {% else %}
+          <button  class="menu_a_t list-group-item list-group-item-action border-left-0  border-right-0" style="background-color:#f00; color:#fff;">
+            <img class="card-img-top" src="/media/{{categoria.imagen}}" alt="Foto producto" style="width:100%; "> 
+          </button>
+          <div class="menu_div_t"> 
+            <a href="{% url 'categoria' categoria.id %}" class="p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+              Ver Todo
+            </a>
+            {% for tipo in tipologia %}
+            {% if tipo.linea.nombre == categoria.nombre %}
+              <a href="#" class=" p-2 text-center list-group-item list-group-item-action border-left-0  border-right-0">
+                {{tipo}}
+              </a>
+              <div class="row justify-content-center ">           
+                {% for talle in talle %}
+                  {% if talle.tipologia.id == tipo.id   %}
+                  <div class="d-inline mi_lista_menu1 ">
+                    <a href="#" class="p-2 list-group-item list-group-item-action border-0">
+                      {{talle.talle}}
+                    </a> 
+                  </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+          {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+        -->
+      </div>
+    </div>
+
+    <!-- *********************************
+    * TODOS LOS PRODUCTOS
+    ********************************** -->
+    <!--
+    <div class="col-lg-10 mx-auto p-0 ">
+      <div class="row">
+        <div id = "ruta_tienda" class="col-12">
+           {{clave_mayorista}}
+           <hr/>
+           {{clave_mayorista_usuario}}
+          </div>
+      </div>
+    </div>-->
+    <div id="productos" class="col-lg-10 mx-auto p-0 ">
+      <div class="row">
+        <div id = "ruta_tienda" class="col-12">
+          {% if ruta_en_tienda_categoria %}
+            {{ruta_en_tienda_categoria|upper}}
+            {% if ruta_en_tienda_tipologia %} 
+              |  {{ruta_en_tienda_tipologia|upper}} 
+              {% if ruta_en_tienda_talle %} 
+              | TALLE: {{ruta_en_tienda_talle}}
+              {% endif %}
+            {% endif %}
+          {% endif %}
+          </div>
+      </div>
+      
+ 
+
+      <div class="row mx-auto">
+        {% for producto in productos %}
+
+        <div class="col-12 col-sm-6 col-md-4 p-1"> 
+          <div class="card border-0 mx-auto mb-3 mi_contenedor_imagen  cont_img" >
+            <a href="{% url 'ver_producto' articulo=producto.articulo %}"  >
+              <div class="bg-image hover-zoom">
+              <img class="card-img-top" src="/media/{{producto.imagen}}" alt="Foto producto" style="width:100%; ">
+              </div>  
+            </a>
+            <!--
+            <button class="btn   mi_whatsapp " >
+              <a href="https://api.whatsapp.com/send?phone=1524563277" class="btn-wsp" target="_blank">
+                <i class="icon-whatsapp"></i>
+              </a>
+            </button>
+            -->
+            <button class="btn mi_quick_view  " data-toggle="modal" data-target="#p{{producto.id}}">Vista Rápida</button>
+            <div class="card-body p-2 ">
+                 
+                <p class="card-text text-center">
+                <b>{{producto.nombre}}</b> &nbsp;&nbsp;
+                {% if clave_mayorista_usuario == clave_mayorista %}
+                  ${{producto.precio_mayorista}}
+                {% else %}
+                  ${{producto.precio}}
+                {% endif %}                
+                &nbsp;&nbsp; 
+                </p>  
+            </div>     
+          </div>
+        </div>
+        
+        <!-- ***********************************************************************************
+          *************** Modal 
+        ************************************************************************************* -->
+        <div id="p{{producto.id}}" class="modal fade" role="dialog">
+          <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">{{producto.nombre}}</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                <div class ="row">
+                  <!--******************************************************
+                  * IMAGENES DEL COSTADO
+                  * ****************************************************-->
+                  <div class="col-2 col-md-2">
+                    {% for imagenes in imagenes%}
+                      {% if producto.id == imagenes.producto.id %}
+                        <img class="card-img-top pb-1 img_lat" src="/media/{{imagenes.imagen}}" alt="{{imagenes.nombre}}" style="width:100%; ">
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  
+                  <!--******************************************************
+                  * IMAGEN Y DATOS DE COSTO
+                  * ****************************************************-->
+                  <div id="img_sup" class="col-10 col-md-5  ">
+                    <div  class="d-block d-md-none d-lg-none">
+                      <img src="/media/{{producto.imagen}}" alt="{{producto.nombre}}" style="width:100%; ">
+                    </div>                                     
+                    <div  class=" img-zoom-container  d-none d-md-block d-lg-block">
+                      <div class="img-zoom-lens card-img-top pb-1 card-img-top">
+                        <img class="img_zom" src="/media/{{producto.imagen}}" alt="{{producto.nombre}}" style="width:100%; ">
+                        <div class="img-zoom-result " ></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!--******************************************************
+                  * SELECCIÓN DE PRODUCTO PARA CARRITO
+                  * ****************************************************-->
+                  <div class="col-12 col-md-5">
+                    <div class="card-body p-2 ">
+                      <p class="card-text text-center">Tipología:&nbsp; {{producto.tipologia}}</p>
+                      <hr/>
+                      <p class="card-text text-center">Descripción:&nbsp; {{producto.descripcion}}</p>
+                      <hr/>
+                    </div>  
+                    <div class="card-body p-2 d-none  d-lg-block ">
+                      <p class="card-text text-center">
+                        {%for catimg in producto.categoria.all %}
+                          {% if catimg.nombre == "Diamond" or catimg.nombre == "Essencial" or catimg.nombre == "Jogger" or catimg.nombre == "Luxury" or catimg.nombre == "Sport Action"%}
+                            Línea:&nbsp;<img class="card-img-top" src="/media/{{catimg.imagen}}" alt="Foto producto" style="width:30%; ">
+                          {% endif %}
+                        {% endfor %}
+                      </p>
+                      <hr/>
+                      <p class="card-text text-center">Tejido:&nbsp; {{producto.tejido}}</p>
+                      <hr/>
+                      <p class="card-text text-center">Composición:&nbsp; {{producto.composicion}}</p>  
+                    </div>  
+                  </div>
+                  <div class="col-12 col-md-12">
+                    <div class="col-12 col-md-12 mb-4 d-block   d-lg-none ">
+                      <p class="card-text text-center">
+                        {%for catimg in producto.categoria.all %}
+                          {% if catimg.nombre == "Diamond" or catimg.nombre == "Essencial" or catimg.nombre == "Jogger" or catimg.nombre == "Luxury" or catimg.nombre == "Sport Action"%}
+                            Línea:&nbsp;<img class="card-img-top" src="/media/{{catimg.imagen}}" alt="Foto producto" style="width:30%; ">
+                          {% endif %}
+                        {% endfor %}
+                      </p>
+                      <hr/>
+                      <p class="card-text text-center">Tejido:&nbsp; {{producto.tejido}}</p>
+                      <hr/>
+                      <p class="card-text text-center">Composición:&nbsp; {{producto.composicion}}</p>  
+                    </div>
+                    <div class="col-12 col-md-12 mb-4">
+                      <button type="button" class="btn btn-danger lista_talles" style="width:100%;">Lista de Talles</button>
+                    </div>
+                    <div class="col-12 col-md-12 ver_talles">
+                      <img class="card-img-top" src="/media/tablas/tabla_talles.jpg" alt="Foto producto" style="width:100%; ">
+                      <hr/>
+                    </div>
+                    <div class="col-12 col-md-12">
+                      <button type="button" class="btn btn-danger lista_cuidados" style="width:100%;">Cuidados</button>
+                    </div>
+                    <div class="col-12 col-md-12 ver_cuidados">
+                      <table class="table  table-hover text-center">
+                        <tbody>
+                          {% for cuidados in cuidados %}
+                            {% if cuidados.producto.id == producto.id %}
+                              <tr><td>{{cuidados.cuidado}}</td></tr>
+                            {% endif %}
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                      <hr/>
+                    </div>
+
+                    <hr/>
+                    <form class="form_talle">
+
+                          <div class ="row  ">
+                              <div class="d-inline text-center col-3 pt-1"  >
+                                  <b>Color</b>
+                              </div> 
+                              <div class="d-inline text-center col-3 pt-1"  >
+                                  <b>Talle</b>
+                              </div> 
+                              <div class="d-inline text-center col-3 pt-1"  >
+                                  <b>$</b>
+                              </div> 
+                              <div class="d-inline text-center col-3 pt-1"  >
+                                  <b><span class="icon-carrito"></span></b>
+                              </div> 
+                          </div>
+                        
+                          {% for colores in colores %}
+                          {% for cada_producto in cada_producto %} 
+                            {% if cada_producto.articulo == producto.articulo %}  
+                              {% if cada_producto.color == colores.nombre %}
+                              <div class ="row ver_stock">
+                                <div class="div_ver"> 
+                                  <p><b>Quedan en stock: &nbsp;</b> {{cada_producto.stock}}</p>
+                                  <hr/>
+                                  <p>
+                                    <b>Este producto tiene un descunto del: &nbsp;</b> 
+                                    {% if clave_mayorista_usuario == clave_mayorista %}
+                                      ${{cada_producto.descuento_mayorista}}
+                                    {% else %}
+                                      {{cada_producto.descuento}}%
+                                    {% endif %} 
+                                  </p>
+                                </div>
+
+                                <div class="d-inline text-center col-3 pt-1" >
+                                  <span class="color_muestra" style="background-color:{{colores.hexadecimal}};">
+                                  &nbsp;&nbsp;&nbsp;&nbsp;
+                                  </span>&nbsp;&nbsp;&nbsp;{{colores.nombre}}
+                                </div>
+                                <div class="d-inline text-center col-3 pt-1"  >
+                                  {{cada_producto.talle}}
+                                </div>                                       
+                                <div class="d-inline text-center col-3 pt-1"  >
+                                  {% if clave_mayorista_usuario == clave_mayorista %}
+                                    ${{cada_producto.precio_mayorista}}
+                                  {% else %}
+                                    {{cada_producto.precio}}
+                                  {% endif %} 
+                                  
+                                </div>   
+                                <div class="d-inline text-center col-3 pt-1"  >
+                                  <input type="submit"  hidden class="col-12 vervalor" value="1"/>
+                                  <input type="submit"  hidden class="col-12 verid" value="{{cada_producto.id}}"/>
+                                  <input type="radio" hidden class="{{cada_producto.id}}" name="ratio_talle" value="{{cada_producto.id}}"> 
+                                  <button type="button" class="btn btn-info btn-sm agregar_i cp_{{cada_producto.id}} " style="width:100%;"><span class="icon-carrito"></span>Agregar</button>
+                                </div> 
+                              </div>
+                              {% endif %}
+                            {% endif %}
+                          {% endfor %}
+                          {% endfor %}
+                          <div class ="row  ">
+                              <div class="d-inline text-center col-12 pt-1"  >  
+                                <hr/>
+                              </div> 
+                          </div>
+                      <button type="button" class="btn btn-danger btn-sm boton_carrito" style="width:100%;"><span class="icon-carrito"></span>Ir a Carrito</button>  
+                    </form>
+                    <hr/>  
+                  </div>
+                  <div class="col-12 col-md-12">
+                    <center><h3>Completa tu Look</h3></center>
+                  </div>                  
+
+
+                  <div class="col-12 col-md-12">
+                    <div class="row justify-content-center ">
+                    {% for producto_asociado in producto_asociado %}
+                      {% if producto_asociado.producto.articulo == producto.articulo %}
+ 
+                        <div class="d-inline mi_lista_menu1 mt-3 col-2" >
+                          <a  class="pt-1 pb-1 pl-3 pr-3 " href="{% url 'ver_producto' articulo=producto_asociado.articulo %}" >
+                            <img class="card-img-top" src="/media/{{producto_asociado|retornar_imagen}}" alt="Foto producto" style="width:100%; ">
+                          </a>
+                        </div>
+ 
+                      {% endif %}
+                    {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div> 
+        <!-- ***********************************************************************************
+          *************** FIN Modal 
+        ************************************************************************************* -->
+        {% endfor %}
+      </div>
+    </div>   
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-12"  >
+      <br/><br/><br/> 
+    </div>
+  </div>
+</div>
+ 
+{% endblock %}
+{% block javascript %}
+<script src="http://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js"></script> 
+<script type="text/javascript" src="{% static 'js/juan_ajax.js' %}"></script>
+
+<script>
+/*
+  const items = { ...localStorage };
+  console.log(items);
+  Crear(items);
+*/
+</script>
+<script>
+ 
+
+$(".cont_img").mouseover(function() {
+  $(this).parent().find('.mi_quick_view').css({
+      "display": "block",
+
+    });
+});
+$(".cont_img").mouseout(function() {
+  $(this).parent().find('.mi_quick_view').css({
+      "display": "none",
+
+    });
+});
+</script>
+<script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+
+
+<script>
+  /*
+   $(".menu_a_t").css({
+      "background-color": "red",
+      "font-weight": "bolder"
+    });
+*/
+    $('.menu_a_t').click(function() {
+      $(this).parent().find('.menu_div_t').toggle();
+ 
+    });
+
+    $('.lista_talles').click(function() {
+      $(this).parent().parent().parent().parent().find('.ver_talles').toggle();
+ 
+    });
+    $('.lista_cuidados').click(function() {
+      $(this).parent().parent().parent().parent().find('.ver_cuidados').toggle();
+ 
+    });
+
+</script>
+<script>
+  for(i = 0; i < localStorage.length; i++){
+    let clave = localStorage.key(i);
+    let valcp;
+    valcp = ".cp_" + clave.toString()
+    console.log("qqqqqqqqqqqqqqqqqqq");
+    console.log(valcp);
+    $( valcp ).attr("disabled", true);
+  }
+
+</script>
+<script>
+  $('.img_lat').click(function() {
+      
+      let images = $(this).attr('src');
+      console.log(images);
+      $(this).parent().parent().find('#img_sup img').attr("src",images);//      .html("hola");
+      
+ //<img class="card-img-top pb-1 img_lat" src="/media/{{imagenes.imagen}}" alt="{{imagenes.nombre}}" style="width:100%; ">
+  });
+</script>
+<script>
+  $('.img_zom').mouseover(function() {
+    
+    let img, lens, result, cx, cy, ancho, alto;
+    lens = $(this).parent().parent().find('.img-zoom-lens');
+    result = $(this).parent().parent().find('.img-zoom-result');
+    img = $(this);
+
+    ancho = img.width();
+    alto = img.height();
+    console.log("!!!!!");
+    console.log(img);
+    console.log(ancho);
+    console.log(alto);
+    console.log("!!!!!");
+
+
+    console.log(result);
+    result.css({
+      "display": "block",
+    });
+
+    /* Calculate the ratio between result DIV and lens: */
+    cx = result.width() / lens.width();
+    cy = result.height() / lens.height();
+    console.log(cx)
+    console.log(cy)
+    cx = 4;
+    cy = 4;
+    /* Set background properties for the result DIV */
+    result.css('background-image', 'url(' + $(this).attr("src") + ')');
+    result.css("background-size",(ancho*cx)+"px " + (alto*cy) + "px");
+    
+    img.on( "mousemove touchmove", function(e) {
+      let pos, x, y, offset;
+      offset = $(this).offset();
+      e.preventDefault();
+      //console.log( e.target );
+      console.log("holaaaaaa");
+      x = e.pageX - offset.left
+      y = e.pageY - offset.top
+      console.log(e.pageX - offset.left);
+      console.log(e.pageY - offset.top);
+      xr = -x
+      yr = -y
+      console.log(xr);
+      console.log(yr);
+      result.css({'background-repeat': 'no-repeat'});
+
+      result.css("background-position",(xr*cx)+"px " + (yr*cy) + "px");
+      //result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+
+
+
+
+    } );
+
+
+
+
+
+}).mouseout(function() {
+    $('.img-zoom-result').css({
+    "display": "none",
+  });
+});
+
+</script>
+
+<script>
+$(' .div_ver').css({
+      "display": "none",
+    });
+
+$( ".ver_stock").mouseover(function() {
+  $(this).find('.div_ver').css({
+      "display": "block",
+    });
+  $(this).css({
+    "background-color": "#e8e8e8",
+  });  
+});
+$( ".ver_stock").mouseout(function() {
+  $(this).find('.div_ver').css({
+      "display": "none",
+  });
+  $(this).css({
+    "background-color": "#fff",
+  }); 
+});
+
+</script>
+
+
+{% endblock %}

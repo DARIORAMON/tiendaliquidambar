@@ -1,0 +1,45 @@
+{% extends "plantilla_tienda.html" %}
+{% block title %}Liquidambar Almacen Natural - MENSAJE ENVIADO{% endblock %}
+{% load static %}
+{% load i18n %}
+{% block mensaje_enviado %}
+<!-- ---------------------------------------------------------------------------
+-------------- 
+------------------------------------------------------------------------------->
+ 
+<div class="container-fluid  mensaje_enviado_tienda"   >
+    <div class="row reflexion justify-content-center align-items-center  " style="padding-top:20px;">   
+        <div class="col-8  " style="padding-top:40px; padding-bottom: 40px;">
+            <div>
+                <center>
+                    <h1 style="color:#1c9c92d0;">MUCHAS GRACIAS!<i class="fas fa-star"></i></h1>
+                    <p>En breve<b>se van a contactar con vos</b> para coordinar!</p>
+                    <p>Mientras tanto te invitamos a ver todos nuestros productos en la <b style="color:red;">tienda minorista</b></p>
+                    <a href="{% url 'tienda'  %}"  >
+                        Venta Minorista
+                    </a>
+                </center>    
+            </div>
+        </div>  
+     </div>
+ </div>
+  
+
+    
+<section class="container-fluid ">
+    <div class="row" style="padding-top:10px; ">
+        <div class="col-12" style="padding:0px;  ">
+           <br/> 
+        </div>
+    </div>
+</section>
+   
+  
+
+
+
+{% endblock %}
+{% block javascript %}
+<script src="https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js"></script> 
+    <script type="text/javascript" src="{% static 'js/juan_ajax.js' %} " ></script>
+{% endblock %}

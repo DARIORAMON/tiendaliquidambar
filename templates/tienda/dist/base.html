@@ -1,0 +1,17 @@
+{% load static %}
+<!Doctype html>
+<html lang="es">
+   <head>
+       <meta charset="utf-8">
+      <title>Patrón mvc</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>{% block title %}{% if page_title %}{{ page_title }} - {% endif %}{{ site_name }}{% endblock %}</title>
+       <meta name="keywords" content="{{ palabras_claves }}" />
+       <meta name="description" content="{{ descripcion }}" />
+      <link rel="stylesheet" type="text/css" href="{% static 'tienda/css/main.css' %}" />
+
+   </head>
+   <body>
+       {% block contenedor %}{% endblock %}
+   </body>
+</html>

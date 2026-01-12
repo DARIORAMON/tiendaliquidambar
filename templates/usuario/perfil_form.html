@@ -1,0 +1,294 @@
+{% extends "plantilla_tienda.html" %}
+{% load static %}
+{% load i18n %}
+{% block perfil %}
+{% if proceso == 1  %}
+<div class="container">
+  <div class="row">
+      <div class ="col-4 " style=" z-index: 20;
+          background-color:#1c9c92d0; color:#fff; padding-top:10px; padding-bottom:10px;
+          -moz-box-shadow:5px 5px 5px #333;
+          -webkit-box-shadow:5px 5px 5px #333;
+          box-shadow:5px 5px 5px #333;
+          ">
+          <center>
+              <h1>Paso 1</h1>
+              <h3>Datos de quien envia</h3>
+          </center>
+          <center>
+              <h1>
+                  <i class="fas fa-arrow-up"> </i>
+              </h1>
+              <p><b>Estás aquí</b></p>
+          </center>
+      </div> 
+      <div class ="col-4 " style="background-color:rgb(247, 110, 110); padding-top:20px; padding-bottom:20px;">
+          <center>
+              <h1>Paso 2</h1>
+              <h3>Checkout</h3>
+          </center>
+      </div> 
+      <div class ="col-4 " style="background-color:rgb(247, 151, 151); padding-top:20px; padding-bottom:20px;">
+          <center>
+              <h1>Paso 3</h1>
+              <h3>Forma de pago</h3>
+          </center>
+      </div> 
+  </div>
+</div>
+{% else %}
+{% endif %}
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="margin-top:50px; margin-bottom:50px;">
+        <div class="col-12 col-md-6 mx-auto border rounded p-4 perfil_form"  >
+            <center><h3 class="alert alert-light border round">Editar Perfil</h3></center>
+            <form id="form" class="    "  action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+               <center><h4>Datos de facturación</h4></center>
+              <div class="row">
+                <div class="col-12 campo_perfilu  " >
+                  {{form.usuario}}
+                </div>
+                <div class="col-6 campo_nombre">
+                  {%if form.nombre.errors %}<p class="perfil_error" >{{form.nombre.errors}}</p>{% endif%}
+                  <label class="id_nombre" for="id_nombre">Nombre: </label>
+                  {% if nombre != ""  %}
+                  <input type="text" name="nombre" maxlength="50" required="" id="id_nombre" placeholder="{{nombre}}"  value="{{nombre}}">
+                  {% else %}
+                  <input type="text" name="nombre" maxlength="50" required="" id="id_nombre" >
+                  {% endif %}
+                </div>
+                <div class="col-6 campo_apellido">
+                    {%if form.apellido.errors %}<p class="perfil_error" >{{form.apellido.errors}}</p>{% endif%}
+                    <label class="id_apellido" for="id_apellido">Apellido:</label>
+                    {% if apellido != ""  %}
+                    <input type="text" name="apellido" maxlength="50" required="" id="id_apellido" placeholder="{{apellido}}" value="{{apellido}}">
+                    {% else %}
+                    <input type="text" name="apellido" maxlength="50" required="" id="id_apellido" >
+                    {% endif %}  
+                </div>
+                <div class="col-6 campo_cuil_cuit">
+                  {%if form.documento.errors %}<p class="perfil_error" >{{form.documento.errors}}</p>{% endif%}
+                  <label class="id_documento" for="id_nombre">DNI:</label>
+                  {% if documento != ""  %}
+                  <input type="text" name="documento" maxlength="20" id="id_documento" placeholder="{{documento}}" value="{{documento}}">
+                  {% else %}
+                  <input type="text" name="documento" maxlength="20" id="id_documento">
+                  {% endif %}     
+                </div>
+                <div class="col-6 campo_clave">
+                    {%if form.clave.errors %}<p class="perfil_error" >{{form.clave.errors}}</p>{% endif%}
+                    <label class="id_clave" for="id_clave">Clave Mayorista:</label>
+                    <input type="text" name="clave" value="---" maxlength="50" id="id_clave" >
+                </div>
+                <div class="col-6 campo_perfil">
+                  {%if form.provincia.errors %}<p class="perfil_error" >{{form.provincia.errors}}</p>{% endif%}
+                  <label class="id_provincia" for="id_provincia">Provincia:<b style="color:#1c9c92d0;">{{provincia}}</b></label>
+                  {{form.provincia}}
+                </div>
+                <div class="col-6 campo_perfil">
+                    {%if form.localidad.errors %}<p class="perfil_error" >{{form.localidad.errors}}</p>{% endif%}
+                    <label class="id_localidad" for="id_localidad">Localidad / Ciudad:</label>
+                    {% if localidad != ""  %}
+                    <input type="text" name="localidad" maxlength="50" required="" id="id_localidad" placeholder="{{localidad}}" value="{{localidad}}">
+                    {% else %}
+                    <input type="text" name="localidad" maxlength="50" required="" id="id_localidad">
+                    {% endif %}  
+                </div>
+                <div class="col-6 campo_perfil">
+                    {%if form.domicilio.errors %}<p class="perfil_error" >{{form.domicilio.errors}}</p>{% endif%}
+                    <label class="id_domicilio" for="id_domicilio">Domicilio:</label>
+                    {% if domicilio != ""  %}
+                    <input type="text" name="domicilio" maxlength="50" required="" id="id_domicilio" placeholder="{{domicilio}}" value="{{domicilio}}">
+                    {% else %}
+                    <input type="text" name="domicilio" maxlength="50" required="" id="id_domicilio">
+                    {% endif %}
+                </div>
+                <div class="col-6 campo_perfil">
+                    {%if form.codigo_postal.errors %}<p class="perfil_error" >{{form.codigo_postal.errors}}</p>{% endif%}
+                    <label class="id_codigo_postal" for="id_codigo_postal">Código Postal:</label>
+                    {% if codigo_postal != ""  %}
+                    <input type="text" name="codigo_postal" maxlength="8" required="" id="id_codigo_postal" placeholder="{{codigo_postal}}" value="{{codigo_postal}}">
+                    {% else %}
+                    <input type="text" name="codigo_postal" maxlength="8" required="" id="id_codigo_postal">
+                    {% endif %}
+                </div>
+                <div class="campo_perfil">
+                    {%if form.celular.errors %}<p class="perfil_error" >{{form.celular.errors}}</p>{% endif%}
+                    <label class="id_celular" for="id_celular">Teléfono:</label>
+                    {% if celular != ""  %}
+                    <input type="text" name="celular" maxlength="15" required="" id="id_celular" placeholder="{{celular}}" value="{{celular}}">
+                    {% else %}
+                    <input type="text" name="celular" maxlength="15" required="" id="id_celular" >
+                    {% endif %} 
+                </div>
+              </div>
+              <br/><hr/>
+              <center><h4>Quiero Factura A/E</h4></center>
+              <div class="row">
+                <div class="col-12 campo_cuil_cuit">
+                  {%if form.cuil_cuit.errors %}<p class="perfil_error" >{{form.cuil_cuit.errors}}</p>{% endif%}
+                  <label class="id_cuil_cuit" for="id_nombre">CUIT/CUIL:</label>
+                  {% if cuil_cuit != ""  %}
+                  <input type="text" name="cuil_cuit" maxlength="20" required="" id="id_cuil_cuit" placeholder="{{cuil_cuit}}"  value="{{cuil_cuit}}">
+                  {% else %}
+                  <input type="text" name="cuil_cuit" maxlength="20" required="" id="id_cuil_cuit">
+                  {% endif %}
+                  <span id="spancuit"></span>
+                </div>
+                <div class="col-12 campo_perfil">
+                  {%if form.condicion_afip.errors %}<p class="perfil_error" >{{form.condicion_afip.errors}}</p>{% endif%}
+                  <label class="id_condicion_afip" for="id_condicion_afi">Condición frente AFIP:<b style="color:red;">{{condicion_afip}}</b></label>
+                  {{form.condicion_afip}}
+                </div>
+                <div class="col-6 campo_perfil">
+                    {%if form.razon_social.errors %}<p class="perfil_error" >{{form.razon_sociall.errors}}</p>{% endif%}
+                    <label class="id_razon_sociall" for="id_razon_social">Razón Social:</label>
+                    {% if razon_social != ""  %}
+                    <input type="text" name="razon_social" value="---" maxlength="128" id="id_razon_social" placeholder="{{razon_social}}" value="{{razon_social}}">
+                    {% else %}
+                    <input type="text" name="razon_social" value="---" maxlength="128" id="id_razon_social" >
+                    {% endif %}
+                </div>
+                <div class="col-6 campo_perfil">
+                    {%if form.domicilio_comercial.errors %}<p class="perfil_error" >{{form.domicilio_comercial.errors}}</p>{% endif%}
+                    <label class="id_domicilio_comercialr" for="id_domicilio_comercial">Domicilio Comercial:</label>
+                    {% if domicilio_comercial != ""  %}
+                    <input type="text" name="domicilio_comercial" value="---" maxlength="128" id="id_domicilio_comercial" placeholder="{{domicilio_comercial}}" value="{{domicilio_comercial}}">
+                    {% else %}
+                    <input type="text" name="domicilio_comercial" value="---" maxlength="128" id="id_domicilio_comercial" >
+                    {% endif %}     
+                </div>
+              </div>
+                <br/>  
+                <center>
+                    <br/>
+                    <button type="submit" class="btn btn-danger float-right"  >
+                      Confirmar Datos
+                      <i class="fa fa-caret-right"></i>  
+                    </button>
+                </center>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascript %}
+<script src="https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js"></script> 
+<script type="text/javascript" src="{% static 'js/juan_ajax.js' %}"></script>
+<script>
+    $('#id_provincia').css({
+          'width': '100%',
+        }); 
+</script>
+<script>
+    /* ***********************************************************
+    * PASO 1 - llamo a función que aplica la mascara
+    * Aquí tomo el campo de formulario a aplicarle la mascara
+    ***************************************************************/
+    document.addEventListener('DOMContentLoaded', function() {
+      aplicarMascaraCUIT('id_cuil_cuit', '00-00000000-0');
+    });
+    /* ***********************************************************
+    * PASO 2 - Defino la función que aplica la mascara
+    ***************************************************************/ 
+    function aplicarMascaraCUIT(elementId, mask) {
+      let inputElement = document.getElementById(elementId);
+      let content = '';
+      let maxChars = numeroDeCaracteresCUIT(mask);  // PASO 2.1 Chequea la cantidad de caracteres
+      console.log(maxChars)
+      inputElement.addEventListener('keydown', function(e) {
+        e.preventDefault();
+        console.log(e)
+        console.log(e.key)
+        // PASO 2.2 Si es número 
+        //y menor que maxChars agrega el número
+        if (isNumeric(e.key) && content.length < maxChars) {
+          content += e.key;
+        }
+        // PASO 2.3 Si presiono tecla de borrado elimino último dígito
+        console.log(e.keyCode)
+        if(e.keyCode == 8) {
+          if(content.length > 0) {
+            content = content.substr(0, content.length - 1);
+          }
+        }
+        // PASO 2.4 Agrego el formato de lamascara
+        inputElement.value = maskIt(mask, content);
+        // PASO 2.5 Chequeo si el valor es correcto
+        cuit_m=maskIt(mask, content)
+        console.log(cuit_m)
+        cuit=content
+        console.log(cuit)
+        base = [5, 4, 3, 2, 7, 6, 5, 4, 3, 2];
+        let aux = 0;
+        console.log(aux);
+        for(let i=0; i<10; i++){
+            aux += parseInt(cuit[i]) * base[i];
+        }
+        aux = 11 - (aux % 11);
+        if(aux==11){
+            aux=0;
+        }else if(aux==10){
+            aux=9;
+        }
+        if(parseInt(cuit[10])==aux){
+            console.log("ok");
+            $("#spancuit").css({
+            "background-color": "#0f0",
+            "color":"#000",
+            "font-weight": "bolder",
+            "padding":5,
+            });
+            $("#spancuit").html("OK");
+        }else{
+            console.log("no ok");
+            $("#spancuit").css({
+            "background-color": "#f00",
+            "color":"#fff",
+            "font-weight": "bolder",
+            "padding":5,
+            });
+            $("#spancuit").html("NO OK");
+        }
+        console.log(aux);
+        console.log("33333333jjjjjj");
+      })
+    } 
+    /* ***********************************************************
+    * PASO 2.1 - Chequea la cantidad de caracteres
+    ***************************************************************/
+    function numeroDeCaracteresCUIT(pattern) {
+      let numberChars = 0;
+      for(let i = 0; i < pattern.length; i++) {
+        if(pattern[i] === '0') {
+          numberChars ++;
+        }
+      }
+      return numberChars;
+    }
+    /* ***********************************************************
+    * PASO 2.2 - Chequea si el valor es numérico
+    ***************************************************************/
+    function isNumeric(char) {
+      return !isNaN(char - parseInt(char));
+    }
+    /* ***********************************************************
+    * PASO 2.4 - FORMATO DE LA MASCARA
+    ***************************************************************/
+    function maskIt(pattern, value) {
+      let position = 0;
+      let currentChar = 0;
+      let masked = '';
+      while(position < pattern.length && currentChar < value.length) {
+        if(pattern[position] === '0') {
+          masked += value[currentChar];
+          currentChar++;
+        } else {
+          masked += pattern[position];
+        }
+        position++;
+      }
+      return masked;
+    }  
+</script>
+{% endblock %}

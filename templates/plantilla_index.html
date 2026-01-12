@@ -1,0 +1,277 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block contenedor %}
+<div class="whatsapp_ic"  >
+  <a href="https://api.whatsapp.com/send?phone=+5491125900799" class="btn-wsp" target="_blank" style= "background-color: #0dcad8a9">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</div>
+<div class="container-fluid"  >
+  <div class="row justify-content-center pt-0 pb-1"  >
+    <div class="col-12"  style="background-color:#0dcad8a9; color:#fff; font-size: 14px; z-index: 4000;">
+      <div class="row justify-content-center pt-1 pb-1"  >
+        <div class="col-lg-3 col-sm-5 col-md-4 col-lg-2" >
+          <i class="fas fa-truck" style="  font-size: 20px;" aria-hidden="true">&nbsp;<b style="font-size: 14px;  ">ENVIOS GRATIS A CABA y GRAN BS AS POR COMPRAS SUPERIORES A $50.000 PESOS, RESTO DEL PAIS CONSULTAR COSTO DE ENVIOS A PUNTOS HOP</b></i>
+        </div>
+        <div class="col-6 col-sm-5 col-md-4  col-lg-2">
+          <i class="fa fa-credit-card  " style="  font-size: 20px;" aria-hidden="true">&nbsp;<b style="font-size: 14px;  ">3 Y 6 CUOTAS SIN INTERÉS</b></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid menui3" >
+  <div class="row justify-content-center pt-1  " style="background-color:#0dcad8a9;  ">
+    <div class="col-12  col-md-10">
+      <nav class="navbar navbar-expand-lg  pb-0" style="background-color:#0dcad8a9;  ">
+        <div class="container-fluid">
+          <div class="d-lg-none" style="z-index: 5000;" >
+            <a class="navbar-brand  " href="{% url 'home'  %}">
+              <img src="/media/logos/newlogo.png" style="  width:60px; height:45px;"  alt="">
+            </a>
+          </div>
+          <button class="navbar-toggler" type="button" style="z-index: 5000;"      data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-align-justify" style=" color:#fff;  font-size:24px;"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">  
+            <div class="col-12">
+              <div class="row justify-content-center">
+                <div class="col-12" style="z-index:400;">
+                  <div class="row justify-content-between">
+                    <div class="col-12 col-lg-4" >
+                      <div class="row justify-content-start" >
+                        <div class="d-lg-none buscador_general_lupa2" style="z-index: 5000;">
+                          <i class="fa fa-search" style="color:#fff; font-size:20px;"> 
+                          </i>
+                        </div>  
+                        <div class="col-12 col-lg-6 buscador_general">
+                          <div class="row">
+                            <div class="col-8">
+                              <div class="input-group  mt-2 mr-0 ">
+                                <input id="input_buscar" type="text" class="form-control" placeholder=" " aria-label="Buscar" aria-describedby="button-addon2">
+                              </div>
+                            </div>
+                            <div class="col-2">
+                              <div class="input-group mt-2 ml-0  ">
+                                <button id="boton_buscar" class="btn btn-danger" type="button" id="button-addon2" style="background-color:#0dcad8a9;">Buscar</button>
+                              </div>
+                            </div>       
+                          </div>
+                        </div>
+                        <div class="col-12 col-lg-1 buscador_general_lupa">
+                          <a   class="redes col-lg-2 d-none d-lg-block" style="padding:0px 5px; ">
+                            <i class="fa fa-search  " aria-hidden="true"> </i> 
+                          </a>
+                        </div>
+                        <div class="col-12 col-lg-1" >
+                          <a href="#" class="redes" style="padding:0px 5px;">
+                            <i class="fa fa-facebook  "  aria-hidden="true"></i>
+                          </a>
+                        </div>
+                        <div class="col-12 col-lg-1" style="z-index:400;">
+                          <a href="#" class="redes" style="padding:0px 5px;">
+                            <i class="fa fa-instagram  "  aria-hidden="true"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-lg-2 d-none d-lg-block"  >
+                      <a class="navbar-brand  " href="{% url 'home'  %}">
+                        <img src="/media/logos/newlogo.png" width="130" height="120" alt="">
+                      </a>
+                    </div>
+                    <div class="col-12 col-lg-4"  >
+                      <div class="row justify-content-end ">   
+                        {% if user.is_authenticated %}
+                          <div class="col-12 col-lg-1">
+                            <a class="pt-1 pb-1 pl-3 pr-3" title="Logout"  href="{% url 'logout'  %}"><b>
+                            <i class="fa fa-sign-out  "   aria-hidden="true"></i>
+                            </b></a>
+                          </div>
+                          <div class="col-12 col-lg-1">
+                            <a class="pt-1 pb-1 pl-3 pr-3" title="Perfil"  href="{% url 'perfil'  %}"  ><b>
+                            <i class="fa fa-id-card   "  aria-hidden="true"></i> 
+                            </b></a>
+                          </div>
+                        {% else %}
+                          <div class="col-12 col-lg-1">
+                            <a class="pt-1 pb-1 pl-3 pr-3"  title="Login" href="{% url 'login'  %}"><b>
+                            <i class="fa fa-user "  aria-hidden="true"></i>
+                            </b></a>
+                          </div>
+                        {% endif %}
+                          <div class="col-12 col-lg-1">
+                            <a class="pt-1 pb-1 pl-3 pr-3" title="Contacto" href="{% url 'contacto'  %}"><b>
+                            <i class="fa fa-envelope  "  aria-hidden="true"></i>
+                            </b></a>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="d-inline  col-11   text-center">
+                      <hr  style=" background-color:#f0f0f0;  height:1px; opacity:1;  "/>
+                    </div> 
+                  </div>  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>       
+  </div>
+</div>
+<div class="container-fluid menui4"  style="background-color:#0dcad8a9;  ">
+  <div class="row justify-content-center   pb-1">
+    <div class="col-12  col-md-10">
+      <div class="d-none d-md-flex justify-content-center">
+        <div class="p-2" style="z-index: 5000;">
+          <a href="{% url 'tienda'  %}" class=" " >            
+            <img src="/media/logos/iratienda.gif" style="  width:auto; height:auto;"  alt="">
+          </a>
+        </div>
+        {% for categoria in categorias %} 
+          {% if categoria.en_menu == "si" %}    
+          <div class="p-2" style="z-index: 5000;">
+            <a href="{% url 'categoria' categoria.slug %}" style=" z-index:4000;     ">
+              {{categoria.nombre|upper}}
+            </a> 
+          </div>
+          {% endif %}
+        {% endfor %} 
+      </div>
+    </div>       
+  </div>
+</div>
+{% block index %}{% endblock %}
+{% block perfil %}{% endblock %}
+{% block carro %}{% endblock %}
+{% block tienda %}{% endblock %}
+{% block contacto %}{% endblock %}
+{% block mensaje_enviado %}{% endblock %}
+{% block pago %}{% endblock %}
+<!-- ---------------------------------------------------------------------------
+--------------Footer 
+------------------------------------------------------------------------------->
+<div class="container-fluid " >
+  <div class="row pb-4">
+
+    <div id="footer_newsleter" class="col-12 pt-1 pb-0"  style="padding-top:20px; background-color: #0dcad8a9; ">
+      <div  class="row justify-content-center pb-1">
+           <br/><br/>
+      </div>
+    </div>
+    <div id="footer_datos" class="col-12"  style="padding-top:20px; background-color: #0dcad8a9; ">
+      <div  class="row justify-content-center ">
+          <div class="d-inline  col-12 col-md-2 text-center">
+            <div class="row">
+              <div class="col-12">
+                <a class="navbar-brand  " href="{% url 'home'  %}">
+                  <img src="/media/logos/newlogo.png" width="150" height="150" alt="">
+                </a>
+              </div>
+              <div class="col-12">
+                <br/>
+              </div>
+              <div class="col-12">
+                <img src="/media/logos/data_fiscal.jpg" width="150" height="80" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="d-inline  col-12 col-md-3 text-center">
+            <ul>
+              <li><b>MEDIOS DE PAGO</b></li>
+              <li>
+                <img class="card-img-top" src="/media/medios_pago/visa_logo.png" alt="Foto producto" style="width:50px; ">
+                <img class="card-img-top" src="/media/medios_pago/american_express.png" alt="Foto producto" style="width:50px; ">
+                <img class="card-img-top" src="/media/medios_pago/master_card.png" alt="Foto producto" style="width:50px; ">
+                <img class="card-img-top" src="/media/medios_pago/mercado_pago.jpg" alt="Foto producto" style="width:50px; ">
+              </li>          
+            </ul>
+            
+          </div> 
+          <div class="d-inline  footer_datos_nosotros col-12 col-md-2 text-center">
+            <ul>
+              <li><b>NOSOTROS</b></li>
+              <li class="texto_li"><a href="{% url 'contacto'  %}">CONTACTO</a></li>  
+            
+            </ul>
+          </div> 
+        <!--<div class="d-inline footer_datos_categoria col-12 col-md-2 text-center">
+            <ul>
+              <li><b>CATEGORIAS</b></li>
+              {% for categoria in categorias %}
+              {% if categoria.imagen == "" %}
+                <li class="texto_li">
+                  <a href="{% url 'categoria' categoria.id %}" S >
+                    {{categoria.nombre|upper}} 
+                  </a> 
+                </li>   
+              {% else %}
+                <li class="texto_li">
+                  <a href="{% url 'categoria' categoria.id %}"  >
+                    <img class="card-img-top" src="/media/{{categoria.imagen}}" alt="Foto producto" style="width:100px; ">
+                  </a> 
+                </li>  
+              {% endif %}
+            {% endfor %}         
+            </ul>
+          </div> -->
+          <div class="d-inline footer_datos_ayuda col-12 col-md-2 text-center">
+            <ul>
+              <li><b>AYUDA</b></li>
+              <li class="texto_li"><a href="{% url 'preguntas_frecuentes'  %}">PREGUNTAS FRECUENTES</a></li>        
+            </ul>
+          </div> 
+          <div class="d-inline  col-11   text-center">
+            <hr  style=" background-color:#000000;     "/>
+          </div> 
+          
+          <div class="d-inline  col-11   text-center">
+            <div  class="row justify-content-between ">
+              <div class="   col-12 col-md-4 p-0 ">
+                 <p style="color:#fff; padding:0px; font-size: 12px; width:320px;">Liquidambar Almacen Natural 2024 - TODOS LOS DERECHOS RESERVADOS</p>
+              </div> 
+              <div class="   col-12 col-md-2 text-center"  > 
+                     
+              </div>
+              <div class="   col-12 col-md-1 text-center"  > 
+                <img class="card-img-top" src="/media/medios_pago/superoferta.jpg" alt="Foto producto" style="width:70px; "> 
+              </div>
+          </div>
+          </div> 
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block javascript2 %}
+<script> 
+$(".buscador_general_lupa").click(function(){
+	$(".buscador_general").css({"display":"block"});
+  $(".buscador_general_lupa").css({"display":"none"});
+  $(".buscador_general_lupa2").css({"display":"none"});
+});
+$(".buscador_general_lupa2").click(function(){
+	$(".buscador_general").css({"display":"block"});
+  $(".buscador_general_lupa").css({"display":"none"});
+  $(".buscador_general_lupa2").css({"display":"none"});
+});
+$( "#boton_buscar" ).click(function(){
+	valor = $( "#input_buscar" ).val();
+	buscar(valor)
+});
+$( "#boton_buscar2" ).click(function(){
+	valor = $( "#input_buscar2" ).val();
+	buscar(valor)
+});
+function buscar(valor){
+  console.log("hola juan");
+  if(valor == ""){
+    var urlap = window.location.origin + "/tienda/tienda_busqueda/" + "sin_coincidencias";   
+  }else{
+    var urlap = window.location.origin + "/tienda/tienda_busqueda/" + valor; 
+  }                  
+  window.location.href = urlap;
+}
+</script>
+{% endblock %}

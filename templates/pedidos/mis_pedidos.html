@@ -1,0 +1,265 @@
+{% extends "plantilla_tienda.html" %}
+
+{% load static %}
+{% block carro %}
+{% load carrito %}
+
+
+<div class="container-fluid" style="background-color: #e8e8e8;">
+    <div class="row">
+      <div class="col-12">
+         <br/><br/><br/><br/><br/><br/><br/>
+      </div>
+    </div>
+  </div>
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="row justify-content-start ">
+        <div class="d-inline mi_lista_menu1 pt-3">
+            {% if datos_para_imagen.imagen %}
+                <img  src="/media/{{datos_para_imagen.imagen}}"    alt="{{usuario.nombre}}" class="img-thumbnail" style="width:50px; height: auto;"/>
+            {% else %}
+                <img  src="/media/usuario/defecto.png"    alt="{{usuario.nombre}}" class="img-thumbnail" style="width:50px; height: auto;"/>
+            {% endif %}
+        </div>
+        <div class="d-inline mi_lista_menu1 pt-3">
+            <h3>&nbsp;&nbsp;Hola:&nbsp; {{request.user}}</h3>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+
+
+
+<div class="container">
+    <div class="border rounded p-4 m-4">
+        <div class="d-flex justify-content-between">
+            <div>        
+ 
+            </div>
+            <div>
+                <a class="navbar-brand mb-3" href="{% url 'tienda'  %}">
+                    <button type="button" class="btn btn-danger btn-sm" style="width:100%;">
+                        Seguir comprando
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <!-- *******************************************************
+        *   VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+        *********************************************************-->
+
+
+        <form class="form_talle">
+  
+            <div class ="row  ">
+ 
+            </div>    
+            {% for pedido in pedidos %}
+ 
+                
+                <div class ="row  " > 
+                    {% if pedido.estado == "A CONFIRMAR" %}  
+                    <div class="d-inline text-center col-4 pt-1"  style="background-color:#f00; color:#fff;">
+                        <b>Fecha</b>
+                    </div> 
+                    <div class="d-inline text-center col-4 pt-1"  style="background-color:#f00; color:#fff;">
+                        <b>Estado</b>
+                    </div> 
+                    <div class="d-inline text-center col-4 pt-1"  style="background-color:#f00; color:#fff;">
+                        <b>$</b>
+                    </div>  
+                    {% elif pedido.estado == "ACREDITADO" %}
+                    <div class="d-inline text-center col-4 pt-1"  style="background-color:#0f0; color:#fff;">
+                        <b>Fecha</b>
+                    </div> 
+                    <div class="d-inline text-center col-4 pt-1"  style="background-color:#0f0; color:#fff;">
+                        <b>Estado</b>
+                    </div> 
+                    <div class="d-inline text-center col-4 pt-1"  style="background-color:#0f0; color:#fff;">
+                        <b>$</b>
+                    </div>
+                    {% elif pedido.estado == "FACTURADO" %}
+                    <div class="d-inline text-center col-4 pt-1"  style="background-color:#00f; color:#fff;">
+                        <b>Fecha</b>
+                    </div> 
+                    <div class="d-inline text-center col-4 pt-1"  style="background-color:#00f; color:#fff;">
+                        <b>Estado</b>
+                    </div> 
+                    <div class="d-inline text-center col-4 pt-1"  style="background-color:#00f; color:#fff;">
+                        <b>$</b>
+                    </div>
+                    {% elif pedido.estado == "DESPACHADO" %}
+                    <div class="d-inline text-center col-4 pt-1"  style="background-color:#c8c8c8; color:#fff;">
+                        <b>Fecha</b>
+                    </div> 
+                    <div class="d-inline text-center col-4 pt-1"  style="background-color:#c8c8c8; color:#fff;">
+                        <b>Estado</b>
+                    </div> 
+                    <div class="d-inline text-center col-4 pt-1"  style="background-color:#c8c8c8; color:#fff;">
+                        <b>$</b>
+                    </div>
+                    {% endif %} 
+
+
+
+                    <div class="d-inline text-center col-4 pt-1"  >
+                        {{pedido.fecha}}
+                    </div>                    
+                    <div class="d-inline text-center col-4 pt-1"  >
+                        {{pedido.estado}}
+                    </div> 
+                    <div class="d-inline text-center col-4 pt-1"  >
+                        {{pedido.total|floatformat:2 }}
+                    </div> 
+                </div>
+                
+ 
+               
+                <div class ="row  " >   
+                    <div class="d-inline text-center col-3 pt-1"  style="background-color:#c8c8c8; color:#000;">
+                        <b>Nombre</b>
+                    </div> 
+                    <div class="d-inline text-center col-3 pt-1"  style="background-color:#c8c8c8; color:#000;">
+                        <b>Color</b>
+                    </div> 
+                    <div class="d-inline text-center col-3 pt-1"  style="background-color:#c8c8c8; color:#000;">
+                        <b>Talle</b>
+                    </div>                    
+                    <div class="d-inline text-center col-3 pt-1"  style="background-color:#c8c8c8; color:#000;">
+                        <b>Precio</b>
+                    </div> 
+                </div>  
+
+
+
+                {% for items in items %}
+                    {% if items.pedido.id == pedido.id %}
+                    <div class ="row  " >   
+                        <div class="d-inline text-center col-3 pt-1">
+                            {{items.nombre}}
+                        </div> 
+                        <div class="d-inline text-center col-3 pt-1">
+                            {{items.color}}
+                        </div> 
+                        <div class="d-inline text-center col-3 pt-1">
+                            {{items.talle}}
+                        </div>                    
+                        <div class="d-inline text-center col-3 pt-1">
+                            {{items.precio|floatformat:2 }}
+                        </div> 
+                    </div> 
+                    {% endif %}
+                {% endfor %}
+
+
+
+
+
+
+
+
+
+
+                <div class ="row  " >   
+                    <div class="d-inline text-center col-12 pt-1" >
+                        <br/><hr/>
+                    </div>  
+                </div>              
+            {% endfor %}
+
+             
+      </form>
+
+
+    </div>
+</div>
+
+
+<div class="container">
+
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Para finalizar</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            Registrate antes de seguir y completa los datos de envío. 
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <a class="pt-1 pb-1 pl-3 pr-3"  href="{% url 'registro'  %}">
+                <button type="button" class="btn btn-danger"  >
+                    Registrarme
+                </button>
+            </a>
+ 
+          </div>     
+        </div>
+      </div>
+    </div>
+  </div>  
+ 
+  
+  <div class="container-fluid" style="background-color: #e8e8e8;">
+    <div class="row">
+      <div class="col-12">
+         <br/><br/><br/><br/><br/><br/><br/>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block javascript %}
+<script src="https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js"></script> 
+<script type="text/javascript" src="{% static 'js/juan_ajax.js' %}"></script>
+
+<script>
+/*
+  const items = { ...localStorage };
+  console.log(items);
+  Crear(items);*/
+</script>
+<script>
+$(document).ready(function() {
+ $("#MyModal").modal();
+});
+</script>
+
+<script>
+    $(' .div_ver_c').css({
+          "display": "none",
+        });
+    
+    $( ".ver_stock").mouseover(function() {
+      $(this).find('.div_ver_c').css({
+          "display": "block",
+        });
+        $(this).css({
+          "background-color": "#e8e8e8",
+        });       
+    });
+    $( ".ver_stock").mouseout(function() {
+      $(this).find('.div_ver_c').css({
+          "display": "none",
+        });
+        $(this).css({
+          "background-color": "#fff",
+        });   
+    });
+    
+    </script> 
+
+ 
+{% endblock %}
+
+

@@ -1,0 +1,16 @@
+{% extends "plantilla_tienda.html" %}
+{% load static %}
+{% block title %}Liquidambar Almacen Natural{% endblock %}
+{% block index %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12" style="padding-top:70px; padding-bottom: 70px;">
+            {% for pregunta in preguntas %}
+                <h1>{{pregunta.pregunta}}</h1>
+                <p>{{pregunta.descripcion}}</p>
+            {%endfor%}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,250 @@
+{% extends "plantilla_tienda.html" %}
+{% load static %}
+{% block carro %}
+{% load carrito %}
+<style>
+  /* Animación de entrada */
+  @keyframes fadeIn {
+      0% {
+          transform: scale(0.7);
+          opacity: 0;
+      }
+      100% {
+          transform: scale(1);
+          opacity: 1;
+      }
+  }
+
+  /* Animación de partículas */
+  @keyframes confetti {
+      0% {
+          transform: translateY(0);
+      }
+      100% {
+          transform: translateY(100vh);
+      }
+  }
+
+  .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      opacity: 0.7;
+      top: -10px;
+      border-radius: 50%;
+      animation: confetti 4s ease-in-out infinite;
+  }
+
+  /* Varios colores para los confetti */
+  .confetti:nth-child(odd) {
+      background-color: yellow;
+  }
+  .confetti:nth-child(even) {
+      background-color: blue;
+  }
+</style>
+<div class="container">
+    <div class="row">
+        <div class ="col-4 " style=" z-index: 20;
+            background-color:#1c9c92d0; color:#000; padding-top:10px; padding-bottom:10px;
+ 
+            ">
+            <center>
+                <h1>Paso 1</h1>
+                <h3>Datos de quien envia</h3>
+            </center>
+        </div> 
+        
+        <div class ="col-4 " style="background-color:rgb(247, 151, 151); padding-top:20px; padding-bottom:20px;">
+            <center>
+                <h1>Paso 2</h1>
+                <h3>Checkout</h3>
+            </center>
+        </div> 
+        <div class ="col-4 " style=" z-index: 20;
+            background-color:#1c9c92d0; color:#fff; padding-top:10px; padding-bottom:10px;
+            -moz-box-shadow:5px 5px 5px #333;
+            -webkit-box-shadow:5px 5px 5px #333;
+            box-shadow:5px 5px 5px #333;
+            ">
+            <center>
+                <h1>Paso 3</h1>
+                <h3>Forma de pago</h3>
+            </center>
+            <center>
+                <h1>
+                    <i class="fas fa-arrow-up"> </i>
+                </h1>
+                <p><b>Estás aquí</b></p>
+            </center>
+        </div> 
+    </div>
+</div>
+
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="row justify-content-start ">
+        <div class="d-inline mi_lista_menu1 pt-3">
+            <h3>&nbsp;&nbsp;Hola:&nbsp; {{request.user}}</h3>
+        </div>
+    </div>
+</div>
+{% endif %}
+<!--
+<div class="container">
+    <div class="border rounded p-4 m-4">
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>FORMA DE PAGO</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>TRANSFERENCIA BANCARIA</td>
+                <td>
+                  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal1">
+                    Pagar
+                  </button>
+                </td>
+              </tr>
+              
+              <tr>
+                <td>PAYPAL</td>
+                <td>
+                  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal2">
+                    Pagar
+                  </button>
+                </td>
+              </tr>
+              
+              <tr>
+                <td>MERCADO PAGO</td>
+                <td>
+                  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal3">
+                    Pagar
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>...</td>
+                <td>...</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>-->
+
+<div class="container mt-5 text-center" id="thank-you-banner" style="position: relative;">
+  <div class="thank-you-message" style="display: inline-block; padding: 30px; background: linear-gradient(45deg, #ff9800, #f44336); color: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); font-size: 1.5em; animation: fadeIn 2s ease-in-out;">
+      <h1 style="font-size: 2.5em; font-weight: bold;">¡Gracias por tu compra!</h1>
+      <p>Uno de nuestros asesores se contactará contigo lo más pronto posible para brindarte una atención personalizada, repasar el pedido y coordinar el costo de envío y los puntos de entrega más cercanos a tu domicilio.</p>
+  </div>
+</div>
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Transferencia </h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        Número de Cuenta:	Cuenta Corriente $   0835/02101603/46
+        Número de CBU:	0150835002000101603461
+        ALIAS:	MANO.ROMBO.SUECIA <br>
+        * Una vez realizada la transferencia bancaria enviar comprobante a:
+        <a href="mailto:liquidambar.almacen.natural@gmail.com">liquidambar.almacen.natural@gmail.com <br>
+        y dar aviso al numero de celular:
+        <a href="tel:+5491125900799">+54 9 11 25900799
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+<div class="modal" id="myModal2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">PAYPAL </h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        Estás pagando mediante PAYPAL ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+<!-- The Mercado Pago Modal -->
+<!-- Modal Mercado Pago -->
+<!-- The Mercado Pago Modal -->
+<!-- The Mercado Pago Modal -->
+<div class="modal" id="myModal3">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Mercado Pago</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        Deberás abonar un total de {{ pedido_id_total }} ARS mediante Mercado Pago.
+        <!-- Botón de pago personalizado -->
+        <div class="text-center mt-3">
+          <a href="https://link.mercadopago.com.ar/liquidambardietetica" target="_blank">
+            <button class="btn btn-lg btn-primary" style="background-color: #4CAF50; border-radius: 12px; color: white; font-size: 1.2em; padding: 15px 30px;">
+              Pagar con Mercado Pago
+            </button>
+          </a>
+          <br>
+          <br>
+          Una vez Realizado el Pago enviar el comprobante a: <br> liquidambar.almacen.natural@gmail.com <br>
+           o a traves de whatsapp al : +54 9 11 25900799. 
+           <br> Muchas Gracias!
+           <br>En las brevedad nos pondremos en contacto contigo para coordinar la entrega!
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
+{% block javascript %}
+<script src="https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js"></script> 
+
+
+<script>
+
+<!-- Agregamos unos "confetti" voladores -->
+
+    const confettiCount = 50;  // Número de confetti
+    const container = document.getElementById('thank-you-banner');
+
+    for (let i = 0; i < confettiCount; i++) {
+        let confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.animationDuration = Math.random() * 3 + 2 + "s"; // Duración aleatoria
+        confetti.style.animationDelay = Math.random() * 1 + "s"; // Delay aleatorio
+        container.appendChild(confetti);
+    }
+
+
+</script>
+
+{% endblock %}

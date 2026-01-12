@@ -1,0 +1,36 @@
+{% extends "plantilla_tienda.html" %}
+
+{% load static %}
+{% block perfil %}
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="row">
+        <div class=" imagen_perfil col-xs-12  col-sm-6   col-md-6 pt-4 " >
+            {% if datos_para_imagen.imagen %}
+ 
+                <img  src="/media/{{datos_para_imagen.imagen}}"    alt="{{usuario.nombre}}" class="img-thumbnail" style="width:70px; height: auto;"/>
+
+            {% else %}
+                <img  src="/media/{{datos_para_imagen.imagen}}"    alt="{{usuario.nombre}}" class="img-thumbnail" style="width:70px; height: auto;"/>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Bienvenido:&nbsp;{{datos_para_imagen.usuario}}</h1>
+            <a href="{% url 'editar-perfil'  usuario_actual=usuario  %}"  class="usuario_link btn btn-info btn-lg">
+                <span class="mb_span2"  >Editar Perfil</span>
+            </a>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}
