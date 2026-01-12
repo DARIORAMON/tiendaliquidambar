@@ -52,7 +52,7 @@ class Tienda(View):
         # ###########################################################
         current_site = Site.objects.get_current()
         params["dominio_actual"] = current_site.domain
-        params["nombre_sitio"] = "Prestige"
+        params["nombre_sitio"] = "Liquidambar"
         params["categorias"] = categorias
         params["productos"] = productos
         params["imagenes"] = imagenes
@@ -112,7 +112,7 @@ class TiendaBusqueda(View):
         # ###########################################################
         current_site = Site.objects.get_current()
         params["dominio_actual"] = current_site.domain
-        params["nombre_sitio"] = "Prestige"
+        params["nombre_sitio"] = "Liquidamber"
         params["categorias"] = categorias
         params["productos"] = productos
         params["imagenes"] = imagenes
@@ -123,5 +123,62 @@ class TiendaBusqueda(View):
         except:
             print("---------  No estás logueado ")
         return render(request, self.template, params)
+
+class TiendaOfertas(View):
+    template = "tienda/ofertas.html"
+
+    def get(self, request):
+        params = {}
+        categorias = Categoria.get_all_categorias()
+        imagenes = ImagenProducto.objects.all()
+
+        # Filtramos solo los productos que tengan el check "es_oferta" activo
+        # y que cumplan con tus requisitos de publicación y stock
+        cada_producto = Producto.objects.filter(
+            Q(estado="Publicado"),
+            Q(es_oferta=True), # <--- FILTRO DE OFERTA
+            ~Q(stock=0),
+            ~Q(precio=0.00),
+        )
+
+        if cada_producto.exists():
+            lo_que_veo = "1"
+        else:
+            lo_que_veo = "0"
+
+        # Seguimos tu lógica de artículos únicos para el listado
+        cada_p_lista = [cada.articulo for cada in cada_producto]
+        cada_p_set = set(cada_p_lista)
+        cada_p_lista2 = list(cada_p_set)
+        
+        productos = Producto.objects.filter(
+            Q(estado="Publicado"), 
+            Q(articulo__in=cada_p_lista2),
+            Q(es_oferta=True) # Aseguramos que solo traiga los padres en oferta
+        )
+
+        # Inicializar carro si no existe
+        if "carro" not in request.session:
+            request.session["carro"] = {}
+
+        # Datos para el template
+        current_site = Site.objects.get_current()
+        params["dominio_actual"] = current_site.domain
+        params["nombre_sitio"] = "Liquidambar"
+        params["categorias"] = categorias
+        params["productos"] = productos
+        params["imagenes"] = imagenes
+        params["cada_producto"] = cada_producto
+        params["lo_que_veo"] = lo_que_veo
+        
+        try:
+            params["usuario"] = request.user
+        except:
+            pass
+
+        return render(request, self.template, params)    
+
+
+
 def error_404_view(request, exception):
     return render(request, "400.html")
