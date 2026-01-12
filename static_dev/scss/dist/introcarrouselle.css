@@ -1,0 +1,369 @@
+#micarrouselle {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+#micarrouselle .background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: rebeccapurple;
+  z-index: -1;
+}
+
+#micarrouselle .background img {
+  height: 100%;
+  width: 100%;
+}
+
+#micarrouselle nav {
+  display: flex;
+  padding: 25px 150px;
+  color: white;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#micarrouselle nav h5 {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+#micarrouselle nav ul {
+  list-style: none;
+}
+
+#micarrouselle nav ul li {
+  display: inline-block;
+  margin: 0 40px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+#micarrouselle .search {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#micarrouselle .search i {
+  color: gray;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+#micarrouselle .side-indicator {
+  height: 70%;
+  top: 15%;
+  left: 0;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  justify-content: space-evenly;
+}
+
+#micarrouselle .line {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background-color: #afbad3;
+  opacity: 0.7;
+}
+
+#micarrouselle .index {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: #afbad3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: height 0.7s ease, width 0.7s ease;
+}
+
+#micarrouselle .index p {
+  opacity: 0;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  z-index: 9;
+}
+
+#micarrouselle .active {
+  height: 30px;
+  width: 30px;
+}
+
+#micarrouselle .active p {
+  opacity: 1;
+  font-size: 16px;
+}
+
+#micarrouselle .content {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#micarrouselle .text-wrapper {
+  width: 60%;
+}
+
+#micarrouselle .text {
+  padding-left: 300px;
+  padding-right: 100px;
+}
+
+#micarrouselle #title {
+  overflow: hidden;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+#micarrouselle .text h4 {
+  font-family: "Oswald";
+  font-size: 120px;
+  color: white;
+  position: relative;
+}
+
+#micarrouselle #description {
+  overflow: hidden;
+  height: 55px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#micarrouselle #description p {
+  color: white;
+  font-size: 12px;
+  max-height: 55px;
+  opacity: 0.8;
+  position: relative;
+}
+
+#micarrouselle .btn {
+  width: 150px;
+  background-color: #25609f;
+  display: flex;
+  align-items: center;
+  padding: 10px 10px;
+  border-radius: 8px;
+  margin-top: 60px;
+  justify-content: space-evenly;
+  cursor: pointer;
+}
+
+#micarrouselle .btn p {
+  color: white;
+  font-size: 18px;
+}
+
+#micarrouselle .btn i {
+  color: white;
+}
+
+#micarrouselle .glide {
+  width: 40%;
+}
+
+#micarrouselle .glide_cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 1;
+  cursor: default;
+}
+
+#micarrouselle .slide {
+  height: 500px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 40px;
+  flex-shrink: 0;
+}
+
+#micarrouselle .slider-image {
+  height: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.5s;
+}
+
+#micarrouselle .glide__slide--active .slider-image {
+  height: 400px;
+}
+
+#micarrouselle .slider-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#micarrouselle .slide p {
+  color: white;
+  font-size: 14px;
+}
+
+#micarrouselle .rating {
+  display: flex;
+  width: 60px;
+  padding: 8px 0;
+  justify-content: space-between;
+}
+
+#micarrouselle .circle {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: white;
+  opacity: 0.5;
+}
+
+#micarrouselle .active {
+  opacity: 1;
+}
+
+#micarrouselle .bookmark {
+  position: absolute;
+  right: 10px;
+  top: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: grey;
+}
+
+#micarrouselle .controls {
+  width: 80px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: 50px;
+}
+
+#micarrouselle .controls div {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.7;
+  transition: all 0.5s;
+}
+
+#micarrouselle .controls div:active {
+  transform: scale(0.6);
+}
+
+#micarrouselle .controls i {
+  color: gray;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1600px) {
+  #micarrouselle nav {
+    padding: 25px 80px;
+  }
+  #micarrouselle .side-indicator {
+    width: 200px;
+  }
+  #micarrouselle .text-wrapper {
+    width: 50%;
+  }
+  #micarrouselle .glide {
+    width: 50%;
+  }
+  #micarrouselle .text {
+    padding-left: 200px;
+  }
+  #micarrouselle .text h4 {
+    transform: scale(0.8);
+    transform-origin: left;
+  }
+  #micarrouselle .btn {
+    width: 120px;
+  }
+  #micarrouselle .btn p {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  #micarrouselle nav {
+    padding: 25px 40px;
+  }
+  #micarrouselle .text h4 {
+    transform: scale(0.6);
+    transform-origin: left;
+  }
+  #micarrouselle .slide {
+    height: 400px;
+    width: 220px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #micarrouselle .side-indicator {
+    width: 120px;
+  }
+  #micarrouselle .text {
+    padding-left: 120px;
+  }
+  #micarrouselle .content {
+    flex-direction: column;
+  }
+  #micarrouselle .text-wrapper {
+    width: 100%;
+  }
+  #micarrouselle .glide {
+    width: 100%;
+    padding-left: 120px;
+    padding-top: 40px;
+  }
+  #micarrouselle .btn {
+    margin-top: 30px;
+  }
+  #micarrouselle .slide {
+    height: 300px;
+    width: 200px;
+  }
+  #micarrouselle .slider-image {
+    height: 220px;
+  }
+  #micarrouselle .slide p {
+    font-size: 12px;
+  }
+}
+
+/*# sourceMappingURL=introcarrouselle.css.map */

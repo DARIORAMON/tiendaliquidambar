@@ -1,0 +1,206 @@
+.perfil_form{
+  background-color: #fff;
+  padding-left: 15px;
+  padding-right: 15px;
+  -moz-box-shadow: 6px 6px 5px #8e8e8e;
+  -webkit-box-shadow: 6px 6px 5px #8e8e8e;
+  box-shadow: 6px 6px 5px #8e8e8e;
+  border: none 5px #000000;
+  -moz-border-radius-topleft: 43px;
+  -moz-border-radius-topright: 43px;
+  -moz-border-radius-bottomleft: 43px;
+  -moz-border-radius-bottomright: 43px;
+  -webkit-border-top-left-radius: 43px;
+  -webkit-border-top-right-radius: 43px;
+  -webkit-border-bottom-left-radius: 43px;
+  -webkit-border-bottom-right-radius: 43px;
+  border-top-left-radius: 43px;
+  border-top-right-radius: 43px;
+  border-bottom-left-radius: 43px;
+  border-bottom-right-radius: 43px;
+
+  h3 {
+    color: #f00;
+  }
+ 
+
+
+  #form {
+    label {
+      color: #8e8e8e;
+      font-size: 18px;
+      padding-top: 7px;
+      padding-bottom: 7px;
+    }
+
+    #id_provincia {
+      background-color: #fff;
+    }
+    #id_nombre_apellido_recibe{background-color: #d00;}
+
+ 
+
+    #id_envio_otro,
+    #id_nombre_apellido_recibe,
+    #id_documento_recibe,
+    #id_domicilio_recibe,
+    #id_localidad_recibe,
+    #id_provincia_recibe,
+    #id_codigo_postal_recibe,
+    #id_telefono_recibe,
+    #id_nombre,
+    #id_mail,
+    #id_condicion_afip, 
+    #id_razon_social, 
+    #id_domicilio_comercial,
+    #id_apellido,
+    #id_cuil_cuit,
+    #id_documento,
+    #id_clave,
+    #id_provincia,
+    #id_localidad,
+    #id_domicilio,
+    #id_codigo_postal,
+    #id_telefono_fijo,
+    #id_celular,
+    #id_tipo {
+      width: 100%;
+      border: solid 1px #aeaeae;
+      color: #8e8e8e;
+      -moz-border-radius-topleft: 22px;
+      -moz-border-radius-topright: 22px;
+      -moz-border-radius-bottomleft: 22px;
+      -moz-border-radius-bottomright: 22px;
+      -webkit-border-top-left-radius: 22px;
+      -webkit-border-top-right-radius: 22px;
+      -webkit-border-bottom-left-radius: 22px;
+      -webkit-border-bottom-right-radius: 22px;
+      border-top-left-radius: 22px;
+      border-top-right-radius: 22px;
+      border-bottom-left-radius: 22px;
+      border-bottom-right-radius: 22px;
+    }
+    #id_cuil_cuit{width: 80%;}
+    button {
+      width: 170px;
+      -moz-border-radius-topleft: 14px;
+      -moz-border-radius-topright: 14px;
+      -moz-border-radius-bottomleft: 14px;
+      -moz-border-radius-bottomright: 14px;
+      -webkit-border-top-left-radius: 14px;
+      -webkit-border-top-right-radius: 14px;
+      -webkit-border-bottom-left-radius: 14px;
+      -webkit-border-bottom-right-radius: 14px;
+      border-top-left-radius: 14px;
+      border-top-right-radius: 14px;
+      border-bottom-left-radius: 14px;
+      border-bottom-right-radius: 14px;
+      background-color: red;
+    }
+    button:hover {
+      background-color: #d00;
+    }
+  }
+}
+.checkout_form{
+  background-color: #fff;
+  padding-left: 15px;
+  padding-right: 15px;
+  -moz-box-shadow: 6px 6px 5px #8e8e8e;
+  -webkit-box-shadow: 6px 6px 5px #8e8e8e;
+  box-shadow: 6px 6px 5px #8e8e8e;
+  border: none 5px #000000;
+  -moz-border-radius-topleft: 43px;
+  -moz-border-radius-topright: 43px;
+  -moz-border-radius-bottomleft: 43px;
+  -moz-border-radius-bottomright: 43px;
+  -webkit-border-top-left-radius: 43px;
+  -webkit-border-top-right-radius: 43px;
+  -webkit-border-bottom-left-radius: 43px;
+  -webkit-border-bottom-right-radius: 43px;
+  border-top-left-radius: 43px;
+  border-top-right-radius: 43px;
+  border-bottom-left-radius: 43px;
+  border-bottom-right-radius: 43px;
+
+  h3 {
+    color: #f00;
+  }
+ 
+
+
+  form {
+    label {
+      color: #8e8e8e;
+      font-size: 18px;
+      padding-top: 7px;
+      padding-bottom: 7px;
+    }
+
+    #id_provincia {
+      background-color: #fff;
+    }
+  
+    #parte_oculta{display: none;}
+    #form_env{display: none;}
+    #id_nombre_apellido_recibe,
+    #id_documento_recibe,
+    #id_domicilio_recibe,
+    #id_localidad_recibe,
+    #id_provincia_recibe,
+    #id_codigo_postal_recibe,
+    #id_telefono_recibe,
+    #id_nombre,
+    #id_mail,
+    #id_condicion_afip, 
+    #id_razon_social, 
+    #id_domicilio_comercial,
+    #id_apellido,
+    #id_cuil_cuit,
+    #id_documento,
+    #id_clave,
+    #id_provincia,
+    #id_localidad,
+    #id_domicilio,
+    #id_codigo_postal,
+    #id_telefono_fijo,
+    #id_celular,
+    #id_tipo {
+      width: 100%;
+      border: solid 1px #aeaeae;
+      color: #8e8e8e;
+      -moz-border-radius-topleft: 22px;
+      -moz-border-radius-topright: 22px;
+      -moz-border-radius-bottomleft: 22px;
+      -moz-border-radius-bottomright: 22px;
+      -webkit-border-top-left-radius: 22px;
+      -webkit-border-top-right-radius: 22px;
+      -webkit-border-bottom-left-radius: 22px;
+      -webkit-border-bottom-right-radius: 22px;
+      border-top-left-radius: 22px;
+      border-top-right-radius: 22px;
+      border-bottom-left-radius: 22px;
+      border-bottom-right-radius: 22px;
+    }
+    #id_cuil_cuit{width: 80%;}
+    button {
+      width: 170px;
+      -moz-border-radius-topleft: 14px;
+      -moz-border-radius-topright: 14px;
+      -moz-border-radius-bottomleft: 14px;
+      -moz-border-radius-bottomright: 14px;
+      -webkit-border-top-left-radius: 14px;
+      -webkit-border-top-right-radius: 14px;
+      -webkit-border-bottom-left-radius: 14px;
+      -webkit-border-bottom-right-radius: 14px;
+      border-top-left-radius: 14px;
+      border-top-right-radius: 14px;
+      border-bottom-left-radius: 14px;
+      border-bottom-right-radius: 14px;
+      background-color: red;
+    }
+    button:hover {
+      background-color: #d00;
+    }
+  }
+}

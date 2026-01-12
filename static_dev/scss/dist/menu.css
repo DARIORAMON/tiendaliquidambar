@@ -1,0 +1,56 @@
+/*.navbar-toggler-icon{
+    background-color: $logo;
+}*/
+.mi_lista_menu1 a {
+  color: #fff;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.mi_lista_menu1 a:hover {
+  background-color: #fc2652;
+}
+
+.navbar .mi_lista_menu2 li a {
+  color: #fff;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.navbar .mi_lista_menu2 li a:hover {
+  background-color: #fc2652;
+}
+
+/*
+.mi_lista_menu1{
+
+        a{
+            color:$principal;
+            text-decoration: none;
+        }
+        a:hover{
+            color:#fc2652;
+            background-color:$secundario;
+        }
+ 
+
+}
+
+.navbar{
+    
+    .mi_lista_menu2{
+        li{
+            a{
+                color:$principal;
+                text-decoration: none;
+            }
+            a:hover{
+                color:#fc2652;
+                background-color:$secundario;
+            }
+        } 
+    }  
+}
+*/
+
+/*# sourceMappingURL=menu.css.map */
