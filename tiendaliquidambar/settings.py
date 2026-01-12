@@ -93,14 +93,14 @@ WSGI_APPLICATION = 'tiendaliquidambar.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# Sustituye tu DATABASES actual por este:
 DATABASES = {
     'default': dj_database_url.config(
-        default='sqlite:///db.sqlite3',
+        # Railway inyecta esta variable automáticamente en el entorno
+        default=os.environ.get('DATABASE_URL'),
         conn_max_age=600
     )
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
