@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-6tk(#@18i4=+uxvnztpy(ronc5cn)g$o(%af_bjypgw&07%*@r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,8 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    "sslserver",
+    'django.contrib.staticfiles',    
     "captcha",
     'ckeditor',
     'ckeditor_uploader',

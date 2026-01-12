@@ -1,1 +1,1 @@
-web: gunicorn tiendaliquidambar.wsgi
+web: gunicorn tiendaliquidambar.wsgi:application
