@@ -129,7 +129,7 @@ class Carrito(View):
         else:
             raise Exception(f"Error en la solicitud a GeoNames. Código de estado: {response.status_code}")
         
-    response = requests.get("https://api.opencagedata.com/geocode/v1/json?q={codigo_postal},Argentina&key={settings.OPENCAGE_API_KEY}")
+    #response = requests.get("https://api.opencagedata.com/geocode/v1/json?q={codigo_postal},Argentina&key={settings.OPENCAGE_API_KEY}")
     print(response.json())  # Para ver exactamente qué datos está devolviendo la API
 
 
