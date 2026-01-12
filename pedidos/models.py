@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.html import format_html
 
-from productos.models.producto import Producto
+
 
 User._meta.get_field("email")._unique = True
 from datetime import datetime
@@ -214,7 +214,11 @@ class Pedido(TimeStampedModel):
 class Item(models.Model):
 
     pedido = models.ForeignKey(Pedido, related_name="items", on_delete=models.CASCADE)
-    cada_producto = models.ForeignKey(Producto, related_name="pedido_items", on_delete=models.CASCADE) 
+    cada_producto = models.ForeignKey(
+    'productos.Producto', 
+    related_name="pedido_items", 
+    on_delete=models.CASCADE
+    )
     cantidad = models.IntegerField()
     precio = models.DecimalField(max_digits=12, decimal_places=2)
     peso = models.DecimalField(
