@@ -2,12 +2,12 @@ from django.urls import path
 from tienda import crear_datos_localstorage
 from tienda import views_agregar
 from tienda import views_agregar_i
-from tienda.views_tienda import Tienda, TiendaBusqueda, TiendaOfertas
+from tienda.views_tienda import Tienda, TiendaBusqueda, 
 from tienda.views_por_categoria import PorCategoria
 from tienda import views_comprar
 from tienda import views_quitar
 from tienda.views_ver_producto import VerProducto
-from . import views_tienda as views
+
 
 urlpatterns = [
     path("agregar/", views_agregar.agregar, name="agregar"),
@@ -23,6 +23,6 @@ urlpatterns = [
         crear_datos_localstorage.crear_localstorage,
         name="crear_localstorage",
     ),
-    path('ofertas/', TiendaOfertas.as_view(), name="ofertas"),
+   
 ]
 
