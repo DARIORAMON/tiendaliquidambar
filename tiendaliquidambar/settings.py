@@ -103,7 +103,7 @@ DATABASES = {
 
 if not DATABASES['default']:
     DATABASES['default'] = dj_database_url.parse('sqlite:///db.sqlite3')
-    
+
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -187,3 +187,9 @@ EMAIL_USE_TLS = True
 
 GEONAMES_USERNAME = 'drgmaking'
 OPENCAGE_API_KEY = '5bde3f7b38204b02b07b71c8a1dbd97d'
+CSRF_TRUSTED_ORIGINS = [
+    'https://tiendaliquidambar-production.up.railway.app',
+]
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
