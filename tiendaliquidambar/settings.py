@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',    
+    'cloudinary_storage',
+    'django.contrib.staticfiles',
+    'cloudinary',    
     "captcha",
     'ckeditor',
     'ckeditor_uploader',
@@ -68,6 +70,16 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'simple_history.middleware.HistoryRequestMiddleware',
 ]
+
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'duwsty2fa',
+    'API_KEY': '477799478229541',
+    'API_SECRET': 'CMIPPpTYt_Im8PgR6A0LZ9TqeVg'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 ROOT_URLCONF = 'tiendaliquidambar.urls'
 
