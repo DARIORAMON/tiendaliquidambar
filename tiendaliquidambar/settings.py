@@ -158,7 +158,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # Asegúrate de que este nombre coincida EXACTAMENTE con tu carpeta en VS Code
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"), 
+    os.path.join(BASE_DIR, "static_dev"), 
 ]
 
 # 3. Almacenamiento optimizado
