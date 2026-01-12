@@ -32,7 +32,7 @@
       </div>
       <div class="row mx-auto">
         {% for producto in productos %}
-        <div class="col-12 col-sm-6 col-md-4 p-2"> 
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 p-2">  
           <div class="prod_dest card border-0 mx-auto mb-3 mi_contenedor_imagen  cont_img" >
             <a href="{% url 'ver_producto' articulo=producto.articulo %}"  >
               <div class="bg-image hover-zoom">
@@ -50,6 +50,19 @@
                     </div>
                   </div>
                    <hr />
+                  {% if producto.es_oferta %}
+                    <span style="font-size: 16px; color: #999; text-decoration: line-through;">
+                        ${{producto.precio}} 
+                    </span>
+                    <br>
+                    <span style="font-size: 22px; color: #e74c3c; font-weight: bold;">
+                        ${{producto.precio_oferta}} 
+                    </span>
+                  {% else %}
+                    <span style="font-size: 20px;">
+                        ${{producto.precio}} 
+                    </span>
+                  {% endif %}
                   <span style="font-size: 20px;">
                       ${{producto.precio}} 
                   </span>

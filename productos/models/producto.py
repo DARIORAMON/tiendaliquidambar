@@ -32,6 +32,10 @@ class Producto(models.Model):
     peso = models.DecimalField("Peso en Kg", max_digits=12, decimal_places=3, default=0.000)
     stock=models.IntegerField(default=0)
 
+    es_oferta = models.BooleanField(default=False, verbose_name="¿Es Oferta?")
+    precio_oferta = models.FloatField(blank=True, null=True, verbose_name="Precio de Oferta")
+
+
     @staticmethod
     def get_productos_by_id(ids):
         return Producto.objects.filter(id__in=ids)
